@@ -2,6 +2,8 @@ canvas = document.getElementById('canvas');
 ctx = canvas.getContext('2d');
 canvas.height = 640;
 canvas.width = 640;
+var selected = false;
+var selectSquare;
 
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
@@ -58,3 +60,22 @@ for(const key in pieces ){
     ctx.drawImage(item.img, item.pos.x * 80 + 20 , item.pos.y * 80 + 20)  });
 
 }}
+
+canvas.addEventListener('click',handleClick);
+
+
+
+function handleClick(event){
+  var x = event.clientX;
+  var y = event.clientY;
+  let xR = Math.floor(x / 80);
+  let yR = Math.floor(y / 80);
+  select(xR , yR);
+
+}
+function select(x,y){
+  ctx.strokeStyle="red";
+  ctx.strokeRect(x*80 , y*80 , 80 , 80);
+  selectSquare = {x:x , y:y};
+
+}
