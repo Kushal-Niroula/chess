@@ -3,7 +3,7 @@ ctx = canvas.getContext('2d');
 canvas.height = 640;
 canvas.width = 640;
 var selected = false;
-var selectSquare;
+var selectSquare = [];
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');
@@ -38,6 +38,7 @@ var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,
           wR : [{img:w1R,pos:{x:0,y:7}} ,{img:w1R,pos:{x:7 , y:7}}] }
 
 function update(){
+  ctx.clearRect(0,0,640,640);
 for (var i = 0 ; i<=8; i++)
 {
 
@@ -56,7 +57,7 @@ for (var i = 0 ; i<=8; i++)
 
 }
 drawPos();
-
+drawSelect();
 }
 
 
@@ -80,8 +81,12 @@ function handleClick(event){
 
 }
 function select(x,y){
-  ctx.strokeStyle="red";
-  ctx.strokeRect(x*80 , y*80 , 80 , 80);
-  selectSquare = {x:x , y:y};
-
+  selectSquare.push({x:x , y:y});
+  requestAnimationFrame(update);
 }
+
+function drawSelect(){
+  if(selectSquare.length>0){
+  ctx.strokeStyle = "red";
+  ctx.strokeRect(selectSquare[selectSquare.length - 1].x * 80 ,selectSquare[selectSquare.length-1].y * 80 , 80 , 80);
+}}
