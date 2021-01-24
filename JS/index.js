@@ -4,7 +4,6 @@ canvas.height = 640;
 canvas.width = 640;
 var selected = false;
 var selectSquare;
-
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');
@@ -17,6 +16,8 @@ const w1N = document.getElementById('whiteKnight');
 const w1B = document.getElementById('whiteBishop');
 const w1Q = document.getElementById('whiteQueen');
 const w1R = document.getElementById('whiteRook');
+
+setTimeout(requestAnimationFrame(update) , 1000);
 
 var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,pos:{x:2, y:1}} , {img:b1P,pos:{x:3, y:1}} ,
           {img:b1P,pos:{x:4, y:1}} , {img:b1P,pos:{x:5, y:1}} , {img:b1P,pos:{x:6, y:1}} , {img:b1P,pos:{x:7, y:1}}],
@@ -34,7 +35,7 @@ var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,
           wQ : [{img:w1Q,pos:{x:3,y:7}}],
           wR : [{img:w1R,pos:{x:0,y:7}} ,{img:w1R,pos:{x:7 , y:7}}] }
 
-
+function update(){
 for (var i = 0 ; i<=8; i++)
 {
 
@@ -53,6 +54,9 @@ for (var i = 0 ; i<=8; i++)
 
 }
 drawPos();
+requestAnimationFrame(update);
+}
+
 
 function drawPos(){
 for(const key in pieces ){
