@@ -17,8 +17,10 @@ const w1B = document.getElementById('whiteBishop');
 const w1Q = document.getElementById('whiteQueen');
 const w1R = document.getElementById('whiteRook');
 
-setTimeout(requestAnimationFrame(update) , 1000);
 
+document.addEventListener('DOMContentLoaded' , function(){
+  requestAnimationFrame(update);
+},false);
 var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,pos:{x:2, y:1}} , {img:b1P,pos:{x:3, y:1}} ,
           {img:b1P,pos:{x:4, y:1}} , {img:b1P,pos:{x:5, y:1}} , {img:b1P,pos:{x:6, y:1}} , {img:b1P,pos:{x:7, y:1}}],
           bK : [{img:b1K, pos:{x:4 , y:0}}],
