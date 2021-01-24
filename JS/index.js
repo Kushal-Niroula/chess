@@ -2,10 +2,12 @@ canvas = document.getElementById('canvas');
 ctx = canvas.getContext('2d');
 canvas.height = 640;
 canvas.width = 640;
+var player = -1;
 var selected = false;
 var selectSquare = [];
 var flag;
 var selectedPiece;
+var turn = 'w';
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');
@@ -86,6 +88,7 @@ function handleClick(event){
 function select(x,y){
   if(selected == false){
   for(const key in pieces){
+    if(key[0]==turn){
     pieces[key].forEach((item, i) => {
       if(item.pos.x == x && item.pos.y ==y){
         selectSquare.push({x:x , y:y});
@@ -96,16 +99,17 @@ function select(x,y){
         return;
 
       }
-    });
+    });}
 
-}
-}
+}}
+
   else{
       move(x,y,selectedPiece);
       selected = false;
-      selectSquare = []
-  }
-}
+      selectSquare = [];
+
+  }}
+
 
 function drawSelect(){
   if(selectSquare.length>0){
@@ -134,6 +138,7 @@ function move(x,y,piece){
     if(selected == true){
     piece.pos.x = x;
     piece.pos.y = y;
+    turn = turn == 'w'? 'b':'w';
     update();
   }
   else{
@@ -141,4 +146,13 @@ function move(x,y,piece){
     return 0 ;
   }
 
+  }
+
+
+
+
+  function moveValidator(key,x,y){
+    if(key == 'bP' || key == 'wP'){
+      return;
+    }
   }
