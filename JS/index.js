@@ -82,9 +82,18 @@ function handleClick(event){
 }
 function select(x,y){
   if(selected == false){
-  selectSquare.push({x:x , y:y});
-  update();
-  selected = true;
+  for(const key in pieces){
+    pieces[key].forEach((item, i) => {
+      if(item.pos.x == x && item.pos.y ==y){
+        selectSquare.push({x:x , y:y});
+        update();
+        selected = true;
+        return;
+
+      }
+    });
+
+}
 }
   else{
       move(x,y);
@@ -109,7 +118,7 @@ function move(x,y){
         item.pos.x = x;
         item.pos.y = y;
       }
-    
+
       update();
 
     });
