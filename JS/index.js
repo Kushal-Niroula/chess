@@ -19,7 +19,7 @@ const w1R = document.getElementById('whiteRook');
 
 
 document.addEventListener('DOMContentLoaded' , function(){
-  requestAnimationFrame(update);
+  setTimeout(update,2000);
 },false);
 var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,pos:{x:2, y:1}} , {img:b1P,pos:{x:3, y:1}} ,
           {img:b1P,pos:{x:4, y:1}} , {img:b1P,pos:{x:5, y:1}} , {img:b1P,pos:{x:6, y:1}} , {img:b1P,pos:{x:7, y:1}}],
@@ -81,12 +81,33 @@ function handleClick(event){
 
 }
 function select(x,y){
+  if(selected == false){
   selectSquare.push({x:x , y:y});
-  requestAnimationFrame(update);
+  update();
+  selected = true;
+}
+  else{
+      move(x,y);
+      selected = false;
+      selectSquare = []
+  }
 }
 
 function drawSelect(){
   if(selectSquare.length>0){
   ctx.strokeStyle = "red";
-  ctx.strokeRect(selectSquare[selectSquare.length - 1].x * 80 ,selectSquare[selectSquare.length-1].y * 80 , 80 , 80);
+  ctx.strokeRect(selectSquare[0].x * 80 ,selectSquare[0].y * 80 , 80 , 80);
 }}
+
+function move(x,y){
+  for(const key in pieces){
+    pieces[key].forEach((item, i) => {
+      if(item.pos.x == selectSquare[0].x && item.pos.y == selectSquare[0].y){
+        item.pos.x = x;
+        item.pos.y = y;
+      }
+      update();
+    });
+
+  }
+}
