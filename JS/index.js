@@ -4,6 +4,8 @@ canvas.height = 640;
 canvas.width = 640;
 var selected = false;
 var selectSquare = [];
+var flag;
+var selectedPiece;
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');
@@ -36,6 +38,7 @@ var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,
           wB : [{img:w1B, pos:{x:2 , y:7}} , {img:w1B , pos:{x:5 , y:7}}],
           wQ : [{img:w1Q,pos:{x:3,y:7}}],
           wR : [{img:w1R,pos:{x:0,y:7}} ,{img:w1R,pos:{x:7 , y:7}}] }
+
 
 function update(){
   ctx.clearRect(0,0,640,640);
@@ -86,8 +89,10 @@ function select(x,y){
     pieces[key].forEach((item, i) => {
       if(item.pos.x == x && item.pos.y ==y){
         selectSquare.push({x:x , y:y});
+        selectedPiece = item;
         update();
         selected = true;
+        flag = key[0];
         return;
 
       }
@@ -96,7 +101,7 @@ function select(x,y){
 }
 }
   else{
-      move(x,y);
+      move(x,y,selectedPiece);
       selected = false;
       selectSquare = []
   }
@@ -108,20 +113,32 @@ function drawSelect(){
   ctx.strokeRect(selectSquare[0].x * 80 ,selectSquare[0].y * 80 , 80 , 80);
 }}
 
-function move(x,y){
+function move(x,y,piece){
   for(const key in pieces){
     pieces[key].forEach((item, i) => {
       if(item.pos.x ==x && item.pos.y == y){
+        if(key[0] == flag){
+          selected = false;
+          selectSquare = [];
+          return 0;
+        }
         pieces[key].splice(i,1);
-      }
-      if(item.pos.x == selectSquare[0].x && item.pos.y == selectSquare[0].y){
-        item.pos.x = x;
-        item.pos.y = y;
+        update();
+
       }
 
-      update();
 
     });
 
+    }
+    if(selected == true){
+    piece.pos.x = x;
+    piece.pos.y = y;
+    update();
   }
-}
+  else{
+    update();
+    return 0 ;
+  }
+
+  }
