@@ -102,11 +102,16 @@ function drawSelect(){
 function move(x,y){
   for(const key in pieces){
     pieces[key].forEach((item, i) => {
+      if(item.pos.x ==x && item.pos.y == y){
+        pieces[key].splice(i,1);
+      }
       if(item.pos.x == selectSquare[0].x && item.pos.y == selectSquare[0].y){
         item.pos.x = x;
         item.pos.y = y;
       }
+    
       update();
+
     });
 
   }
