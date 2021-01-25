@@ -355,6 +355,18 @@ function bishopMoveValid(key,x,y){
   if(Math.abs(x-selectSquare[0].x) != Math.abs(y-selectSquare[0].y)){
     return false;
   }
+  xdiff = x - selectSquare[0].x;
+  ydiff = y - selectSquare[0].y;
+  let i = xdiff / Math.abs(xdiff);
+  let j = ydiff/ Math.abs(ydiff);
+  while( Math.abs(i) != Math.abs(xdiff)){
+    if(matrix[selectSquare[0].x + i][selectSquare[0].y + j]!=0){
+      
+      return false;
+    }
+    i = i + (xdiff/Math.abs(xdiff));
+    j = j + (ydiff/Math.abs(ydiff));
 
+  }
   return true;
 }
