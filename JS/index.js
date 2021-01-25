@@ -9,6 +9,7 @@ var flag;
 var isCapture;
 var selectedPiece;
 var turn = 'w';
+var castle = false;
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');
@@ -26,22 +27,40 @@ const w1R = document.getElementById('whiteRook');
 document.addEventListener('DOMContentLoaded' , function(){
   setTimeout(update,2000);
 },false);
+
+
+
+
 var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,pos:{x:2, y:1}} , {img:b1P,pos:{x:3, y:1}} ,
           {img:b1P,pos:{x:4, y:1}} , {img:b1P,pos:{x:5, y:1}} , {img:b1P,pos:{x:6, y:1}} , {img:b1P,pos:{x:7, y:1}}],
-          bK : [{img:b1K, pos:{x:4 , y:0}}],
+          bK : [{img:b1K, pos:{x:4 , y:0} , move:false}],
           bN : [{img:b1N , pos:{x:1, y:0}} , {img:b1N , pos:{x:6,y:0}}],
           bB : [{img:b1B, pos:{x:2 , y:0}} , {img:b1B , pos:{x:5 , y:0}}],
           bQ : [{img:b1Q,pos:{x:3,y:0}}],
-          bR : [{img:b1R,pos:{x:0,y:0}} ,{img:b1R,pos:{x:7 , y:0}}],
+          bR : [{img:b1R,pos:{x:0,y:0}, move:false} ,{img:b1R,pos:{x:7 , y:0},move:false}],
 
           wP : [{img:w1P,pos:{x:0, y:6}}, {img:w1P,pos:{x:1, y:6}} , {img:w1P,pos:{x:2, y:6}} , {img:w1P,pos:{x:3, y:6}} ,
           {img:w1P,pos:{x:4, y:6}} , {img:w1P,pos:{x:5, y:6}} , {img:w1P,pos:{x:6, y:6}} , {img:w1P,pos:{x:7, y:6}}],
-          wK : [{img:w1K, pos:{x:4 , y:7}}],
+          wK : [{img:w1K, pos:{x:4 , y:7} , move:0}],
           wN : [{img:w1N , pos:{x:1, y:7}} , {img:w1N , pos:{x:6,y:7}}],
           wB : [{img:w1B, pos:{x:2 , y:7}} , {img:w1B , pos:{x:5 , y:7}}],
           wQ : [{img:w1Q,pos:{x:3,y:7}}],
-          wR : [{img:w1R,pos:{x:0,y:7}} ,{img:w1R,pos:{x:7 , y:7}}] }
+          wR : [{img:w1R,pos:{x:0,y:7},move:false} ,{img:w1R,pos:{x:7 , y:7},move:false}] }
 
+var matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+
+updateMatrix();
+function updateMatrix(){
+  matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+
+  for(key in pieces){
+    pieces[key].forEach((item, i) => {
+      matrix[item.pos.x][item.pos.y] = key[0];
+    });
+
+  }
+
+}
 
 function update(){
   ctx.clearRect(0,0,640,640);
@@ -109,6 +128,7 @@ function select(x,y){
 
   else{
       move(x,y,selectedPiece);
+
       selected = false;
       selectSquare = [];
       update();
@@ -144,11 +164,14 @@ function move(x,y,piece){
 
     }
     if(selected == true && moveValidator(piece.key , x,y,isCapture)){
+
+
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
     checkPromotion(piece,x,y);
     turn = turn == 'w'? 'b':'w';
     isCapture = false;
+    updateMatrix();
     update();
   }
   else{
@@ -220,10 +243,30 @@ function move(x,y,piece){
         }
         break;
 
-        default:
+      case('bK'):
+         return kingMoveValid(key,x,y);
+        break;
+      case ('wK'):
+          return kingMoveValid(key,x,y);
+          break;
+      case ('wR'):
+          return rookMoveValid(key,x,y);
+          break;
+      case('bR'):
+          return rookMoveValid(key,x,y);
+          break;
+      case ('bB'):
+          return bishopMoveValid(key,x,y);
+          break;
+      case ('wB'):
+          return bishopMoveValid(key,x,y);
+          break;
+      default:
         return true;
       }
     }
+
+
 function checkPromotion(piece,x,y){
     if(piece.key == 'wP'){
       if(y == 0){
@@ -237,3 +280,81 @@ function checkPromotion(piece,x,y){
         pieces['bQ'].push({img:b1Q , pos:{x:x , y:y}});
       }
     }}
+
+
+    function kingMoveValid(key,x,y){
+      if( x == selectSquare[0].x +1 || x == selectSquare[0].x-1 ){
+        if(y== selectSquare[0].y || y == selectSquare[0].y +1 || y == selectSquare[0].y -1){
+          return true;
+        }
+      }
+      else if( x == selectSquare[0].x){
+        if(y == selectSquare[0].y +1 || y == selectSquare[0].y -1){
+          return true;
+        }
+      }
+      else{
+        return false;
+      }
+    }
+
+
+function rookMoveValid(key,x,y){
+  let diff = 0;
+  if(x == selectSquare[0].x){
+    if(y > selectSquare[0].y){
+      diff =  y - selectSquare[0].y;
+      for (let j = 1;j<diff;j++){
+        if(matrix[x][selectSquare[0].y+j] != 0){
+          return false;
+        }
+      }
+    }
+    if(y < selectSquare[0].y ){
+      diff = selectSquare[0].y - y;
+      for (let j = 1; j<diff ;j++){
+        if(matrix[x][selectSquare[0].y-j] != 0){
+          return false;
+        }
+      }
+    }
+  }
+  if(y == selectSquare[0].y){
+    if(x > selectSquare[0].x){
+      diff = x- selectSquare[0].x;
+      for(let j = 1 ;j<diff;j++){
+        if(matrix[selectSquare[0].x + j][y] != 0){
+          return false;
+        }
+      }
+    }
+    if(x < selectSquare[0].x){
+      diff =  selectSquare[0].x - x;
+      for(let j = 1 ;j<diff;j++){
+        if(matrix[selectSquare[0].x - j][y] != 0){
+          return false;
+        }
+      }
+    }
+
+  }
+  if(x == selectSquare[0].x && y ==  selectSquare[0].y){
+    return false;
+  }
+if(x == selectSquare[0].x || y == selectSquare[0].y){
+  return true;
+}
+  return false;
+}
+
+
+function bishopMoveValid(key,x,y){
+  if(x == selectSquare[0].x || y == selectSquare[0].y){
+    return false;
+  }
+  if(Math.abs(x-selectSquare[0].x) != Math.abs(y-selectSquare[0].y)){
+    return false;
+  }
+
+  return true;
+}
