@@ -261,6 +261,14 @@ function move(x,y,piece){
       case ('wB'):
           return bishopMoveValid(key,x,y);
           break;
+      case ('bN'):
+            return knightMoveValid(key,x,y);
+            break;
+      case ('wN'):
+            return knightMoveValid(key,x,y);
+            break;
+      case ('wQ'):
+            return(rookMoveValid(key,x,y) ||bishopMoveValid(key,x,y));
       default:
         return true;
       }
@@ -361,7 +369,7 @@ function bishopMoveValid(key,x,y){
   let j = ydiff/ Math.abs(ydiff);
   while( Math.abs(i) != Math.abs(xdiff)){
     if(matrix[selectSquare[0].x + i][selectSquare[0].y + j]!=0){
-      
+
       return false;
     }
     i = i + (xdiff/Math.abs(xdiff));
@@ -369,4 +377,18 @@ function bishopMoveValid(key,x,y){
 
   }
   return true;
+}
+
+function knightMoveValid(key,x,y){
+  if((x == selectSquare[0].x + 2) || x == selectSquare[0].x - 2){
+    if((y == selectSquare[0].y + 1) || y == selectSquare[0].y -1){
+      return true;
+    }
+    }
+    if((y == selectSquare[0].y +2 )|| y == selectSquare[0].y - 2){
+      if(x == selectSquare[0].x + 1 || x == selectSquare[0].x -1){
+        return true;
+      }
+    }
+    return false;
 }
