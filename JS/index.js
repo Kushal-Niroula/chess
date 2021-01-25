@@ -6,6 +6,7 @@ var player = -1;
 var selected = false;
 var selectSquare = [];
 var flag;
+var isCapture;
 var selectedPiece;
 var turn = 'w';
 const b1P = document.getElementById('blackPawn');
@@ -92,7 +93,10 @@ function select(x,y){
     pieces[key].forEach((item, i) => {
       if(item.pos.x == x && item.pos.y ==y){
         selectSquare.push({x:x , y:y});
-        selectedPiece = item;
+        selectedPiece = {
+          key:key,
+          index:i
+        };
         update();
         selected = true;
         flag = key[0];
@@ -107,6 +111,7 @@ function select(x,y){
       move(x,y,selectedPiece);
       selected = false;
       selectSquare = [];
+      update();
 
   }}
 
@@ -121,27 +126,33 @@ function move(x,y,piece){
   for(const key in pieces){
     pieces[key].forEach((item, i) => {
       if(item.pos.x ==x && item.pos.y == y){
-        if(key[0] == flag){
+        isCapture = key[0] == flag ? false:true
+        if(!isCapture){
           selected = false;
           selectSquare = [];
           return 0;
         }
+        if(moveValidator(piece.key , x,y,isCapture)){
         pieces[key].splice(i,1);
         update();
+
 
       }
 
 
-    });
+    }});
 
     }
-    if(selected == true){
-    piece.pos.x = x;
-    piece.pos.y = y;
+    if(selected == true && moveValidator(piece.key , x,y,isCapture)){
+    pieces[piece.key][piece.index].pos.x = x;
+    pieces[piece.key][piece.index].pos.y = y;
+    checkPromotion(piece,x,y);
     turn = turn == 'w'? 'b':'w';
+    isCapture = false;
     update();
   }
   else{
+    isCapture = false;
     update();
     return 0 ;
   }
@@ -151,8 +162,78 @@ function move(x,y,piece){
 
 
 
-  function moveValidator(key,x,y){
-    if(key == 'bP' || key == 'wP'){
-      return;
+  function moveValidator(key,x,y,isCapture){
+    switch(key){
+      case('wP'):
+        if(selectSquare[0].y == 6 && !isCapture){
+          if((y == selectSquare[0].y + player || y == selectSquare[0].y + 2 * player) && x == selectSquare[0].x ){
+            return true;
+          }
+          else{
+            return false;
+          }
+        }
+        else if(selectSquare[0].y < 6 && !isCapture  ) {
+          if(y == selectSquare[0].y + player && x == selectSquare[0].x){
+            return true;
+          }
+
+          else {
+            return false;
+          }
+        }
+        else{
+          if(selectSquare[0].y <=6){
+            if(y == selectSquare[0].y + player && (x == selectSquare[0].x + player || x == selectSquare[0].x - player)){
+              return true;
+            }
+          }
+        }
+
+        return false;
+        break;
+
+        case('bP'):
+        if(selectSquare[0].y == 1 && !isCapture){
+          if((y == selectSquare[0].y - player || y == selectSquare[0].y - 2 * player) && x == selectSquare[0].x ){
+            return true;
+          }
+          else{
+            return false;
+          }
+        }
+        else if(selectSquare[0].y>1 && !isCapture){
+          if(y == selectSquare[0].y - player && x == selectSquare[0].x){
+            return true;
+          }
+
+          else {
+            return false;
+          }
+        }
+        else{
+          if(selectSquare[0].y >=1){
+            if(y == selectSquare[0].y - player && (x == selectSquare[0].x + player || x == selectSquare[0].x - player)){
+              return true;
+            }
+          }
+        }
+        break;
+
+        default:
+        return true;
+      }
     }
-  }
+function checkPromotion(piece,x,y){
+    if(piece.key == 'wP'){
+      if(y == 0){
+        pieces[piece.key].splice(piece.index,1);
+        pieces['wQ'].push({img:w1Q , pos:{x:x , y:y}})
+      }
+    }
+    if(piece.key == 'bP'){
+      if(y == 7){
+        pieces[piece.key].splice(piece.index,1);
+        pieces['bQ'].push({img:b1Q , pos:{x:x , y:y}});
+      }
+    }}
