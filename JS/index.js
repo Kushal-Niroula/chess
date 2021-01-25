@@ -308,41 +308,25 @@ function checkPromotion(piece,x,y){
 
 
 function rookMoveValid(key,x,y){
-  let diff = 0;
+
   if(x == selectSquare[0].x){
-    if(y > selectSquare[0].y){
-      diff =  y - selectSquare[0].y;
-      for (let j = 1;j<diff;j++){
-        if(matrix[x][selectSquare[0].y+j] != 0){
-          return false;
-        }
+    let ydiff = y - selectSquare[0].y;
+    let i =  ydiff/Math.abs(ydiff);
+    while(i != ydiff){
+      if(matrix[x][selectSquare[0].y +i] !=0){
+        return false;
       }
-    }
-    if(y < selectSquare[0].y ){
-      diff = selectSquare[0].y - y;
-      for (let j = 1; j<diff ;j++){
-        if(matrix[x][selectSquare[0].y-j] != 0){
-          return false;
-        }
-      }
+      i = i + ydiff / Math.abs(ydiff);
     }
   }
   if(y == selectSquare[0].y){
-    if(x > selectSquare[0].x){
-      diff = x- selectSquare[0].x;
-      for(let j = 1 ;j<diff;j++){
-        if(matrix[selectSquare[0].x + j][y] != 0){
-          return false;
-        }
+    let xdiff = x - selectSquare[0].x;
+    let j = xdiff/Math.abs(xdiff);
+    while(j != xdiff){
+      if(matrix[selectSquare[0].x + j][y]!=0){
+        return false;
       }
-    }
-    if(x < selectSquare[0].x){
-      diff =  selectSquare[0].x - x;
-      for(let j = 1 ;j<diff;j++){
-        if(matrix[selectSquare[0].x - j][y] != 0){
-          return false;
-        }
-      }
+      j =  j + xdiff / Math.abs(xdiff);
     }
 
   }
