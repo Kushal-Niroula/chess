@@ -10,7 +10,9 @@ var isCapture;
 var selectedPiece;
 var turn = 'w';
 var castle = false;
-var check = false;
+var isCheck = false;
+var whiteMoves = [];
+var blackMoves = [];
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');
@@ -27,6 +29,7 @@ const w1R = document.getElementById('whiteRook');
 
 document.addEventListener('DOMContentLoaded' , function(){
   setTimeout(update,2000);
+  setTimeout(moveGenerator,2000);
 },false);
 
 

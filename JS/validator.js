@@ -33,35 +33,46 @@ function checkPromotion(piece,x,y){
 
 
 function rookMoveValid(selectSquare,x,y){
-
-  if(x == selectSquare[0].x){
-    let ydiff = y - selectSquare[0].y;
-    let i =  ydiff/Math.abs(ydiff);
-    while(i != ydiff){
-      if(matrix[x][selectSquare[0].y +i] !=0){
-        return false;
+  if(x == selectSquare[0].x && y != selectSquare[0].y){
+    if(y > selectSquare[0].y){
+      for (let i = selectSquare[0].y ; i<y;i++){
+        if(i != y && i!= selectSquare[0].y && matrix[x][i] != 0){
+          return false;
+        }
       }
-      i = i + ydiff / Math.abs(ydiff);
+    return true;
+    }
+    if(y< selectSquare[0].y){
+      for(let i = selectSquare[0].y; i>=y;i--){
+
+        if( i!= y && i != selectSquare[0].y && matrix[x][i] != 0){
+
+          return false;
+        }
+      }
+      return true;
     }
   }
-  if(y == selectSquare[0].y){
-    let xdiff = x - selectSquare[0].x;
-    let j = xdiff/Math.abs(xdiff);
-    while(j != xdiff){
-      if(matrix[selectSquare[0].x + j][y]!=0){
-        return false;
+  if(y == selectSquare[0].y && x!= selectSquare[0].x){
+    if(x > selectSquare[0].x){
+      for (let i = selectSquare[0].x ; i<=x;i++){
+        if( i != x && i != selectSquare[0].x && matrix[i][y] != 0){
+          return false;
+        }
       }
-      j =  j + xdiff / Math.abs(xdiff);
+    return true;
+    }
+    if(x< selectSquare[0].x){
+      for(let i = selectSquare[0].x; i>x;i--){
+        if(i !=x && i!= selectSquare[0].x && matrix[i][y] != 0){
+          return false;
+        }
+      }
+      return true
     }
 
+
   }
-  if(x == selectSquare[0].x && y ==  selectSquare[0].y){
-    return false;
-  }
-if(x == selectSquare[0].x || y == selectSquare[0].y){
-  return true;
-}
-  return false;
 }
 
 
@@ -104,6 +115,7 @@ function knightMoveValid(selectSquare,x,y){
 
 
 function pawnMoveValid(selectSquare,key,x,y){
+  if(x >=0 && x<=7 && y>=0 && y<=7){
   if(x== selectSquare[0].x){
       if(key[0]=='w'){
         if(y == selectSquare[0].y + player && matrix[x][y] == 0){
@@ -141,6 +153,8 @@ function pawnMoveValid(selectSquare,key,x,y){
     return true;
   }
 
+}
+return false;
 }
 return false;
 }

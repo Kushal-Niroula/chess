@@ -60,7 +60,8 @@ function move(x,y,piece){
     checkPromotion(piece,x,y);
     turn = turn == 'w'? 'b':'w';
     isCapture = false;
-
+    moveGenerator();
+    check();
     updateMatrix();
     update();
   }

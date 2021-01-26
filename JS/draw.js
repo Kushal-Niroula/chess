@@ -9,3 +9,12 @@ function drawSelect(){
   ctx.strokeStyle = "red";
   ctx.strokeRect(selectSquare[0].x * 80 ,selectSquare[0].y * 80 , 80 , 80);
 }}
+
+function drawCheck(){
+  if(isCheck == 'w'){
+    ctx.strokeRect(pieces['wK'][0].pos.x * 80 , pieces['wK'][0].pos.y * 80 ,80 ,80);
+  }
+  if(isCheck == 'b'){
+    ctx.strokeRect(pieces['bK'][0].pos.x * 80 , pieces['bK'][0].pos.y * 80 ,80 ,80);
+  }
+}
