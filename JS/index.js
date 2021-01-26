@@ -10,6 +10,7 @@ var isCapture;
 var selectedPiece;
 var turn = 'w';
 var castle = false;
+var check = false;
 const b1P = document.getElementById('blackPawn');
 const b1K = document.getElementById('blackKing');
 const b1N = document.getElementById('blackKnight');

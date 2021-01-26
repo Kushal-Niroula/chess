@@ -15,7 +15,7 @@ function checkPromotion(piece,x,y){
     }}
 
 
-    function kingMoveValid(key,x,y){
+    function kingMoveValid(selectSquare,x,y){
       if( x == selectSquare[0].x +1 || x == selectSquare[0].x-1 ){
         if(y== selectSquare[0].y || y == selectSquare[0].y +1 || y == selectSquare[0].y -1){
           return true;
@@ -32,7 +32,7 @@ function checkPromotion(piece,x,y){
     }
 
 
-function rookMoveValid(key,x,y){
+function rookMoveValid(selectSquare,x,y){
 
   if(x == selectSquare[0].x){
     let ydiff = y - selectSquare[0].y;
@@ -65,7 +65,7 @@ if(x == selectSquare[0].x || y == selectSquare[0].y){
 }
 
 
-function bishopMoveValid(key,x,y){
+function bishopMoveValid(selectSquare,x,y){
   if(x == selectSquare[0].x || y == selectSquare[0].y){
     return false;
   }
@@ -88,7 +88,7 @@ function bishopMoveValid(key,x,y){
   return true;
 }
 
-function knightMoveValid(key,x,y){
+function knightMoveValid(selectSquare,x,y){
   if((x == selectSquare[0].x + 2) || x == selectSquare[0].x - 2){
     if((y == selectSquare[0].y + 1) || y == selectSquare[0].y -1){
       return true;
@@ -100,4 +100,47 @@ function knightMoveValid(key,x,y){
       }
     }
     return false;
+}
+
+
+function pawnMoveValid(selectSquare,key,x,y){
+  if(x== selectSquare[0].x){
+      if(key[0]=='w'){
+        if(y == selectSquare[0].y + player && matrix[x][y] == 0){
+          return true
+        }
+      }
+      else{
+        if(y == selectSquare[0].y - player && matrix[x][y] == 0){
+          return true
+        }
+      }
+      }
+
+
+
+  if(x == selectSquare[0].x + 1 || x == selectSquare[0].x -1){
+    if(y == selectSquare[0] . y + player && key[0] == 'w'){
+      if(matrix[x][y][0] == 'b'){
+        return true;
+      }
+    }
+    if(y == selectSquare[0].y - player && key[0] == 'b'){
+      if(matrix[x][y][0] == 'w'){
+        return true;
+      }
+    }
+  }
+  if( y == selectSquare[0].y + 2*player && selectSquare[0].y == 6 && key[0] == 'w' && x == selectSquare[0].x){
+    if(matrix[x][y - player] == 0 && matrix[x][y] == 0){
+    return true;
+  }
+  }
+  if( y == selectSquare[0].y - 2*player && selectSquare[0].y == 1 && key[0] == 'b' && x == selectSquare[0].x){
+    if(matrix[x][y + player] == 0 && matrix[x][y] == 0){
+    return true;
+  }
+
+}
+return false;
 }

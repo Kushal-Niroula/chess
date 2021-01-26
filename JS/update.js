@@ -27,7 +27,7 @@ function updateMatrix(){
 
   for(key in pieces){
     pieces[key].forEach((item, i) => {
-      matrix[item.pos.x][item.pos.y] = key[0];
+      matrix[item.pos.x][item.pos.y] = key;
     });
 
   }

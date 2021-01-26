@@ -60,6 +60,7 @@ function move(x,y,piece){
     checkPromotion(piece,x,y);
     turn = turn == 'w'? 'b':'w';
     isCapture = false;
+
     updateMatrix();
     update();
   }
@@ -77,90 +78,42 @@ function move(x,y,piece){
   function moveValidator(key,x,y,isCapture){
     switch(key){
       case('wP'):
-        if(selectSquare[0].y == 6 && !isCapture){
-          if((y == selectSquare[0].y + player || y == selectSquare[0].y + 2 * player) && x == selectSquare[0].x ){
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        else if(selectSquare[0].y < 6 && !isCapture  ) {
-          if(y == selectSquare[0].y + player && x == selectSquare[0].x){
-            return true;
-          }
-
-          else {
-            return false;
-          }
-        }
-        else{
-          if(selectSquare[0].y <=6){
-            if(y == selectSquare[0].y + player && (x == selectSquare[0].x + player || x == selectSquare[0].x - player)){
-              return true;
-            }
-          }
-        }
-
-        return false;
+        return pawnMoveValid(selectSquare,key,x,y)
         break;
 
         case('bP'):
-        if(selectSquare[0].y == 1 && !isCapture){
-          if((y == selectSquare[0].y - player || y == selectSquare[0].y - 2 * player) && x == selectSquare[0].x ){
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        else if(selectSquare[0].y>1 && !isCapture){
-          if(y == selectSquare[0].y - player && x == selectSquare[0].x){
-            return true;
-          }
-
-          else {
-            return false;
-          }
-        }
-        else{
-          if(selectSquare[0].y >=1){
-            if(y == selectSquare[0].y - player && (x == selectSquare[0].x + player || x == selectSquare[0].x - player)){
-              return true;
-            }
-          }
-        }
+        return pawnMoveValid(selectSquare,key,x,y);
         break;
 
       case('bK'):
-         return kingMoveValid(key,x,y);
+         return kingMoveValid(selectSquare,x,y);
         break;
       case ('wK'):
-          return kingMoveValid(key,x,y);
+          return kingMoveValid(selectSquare,x,y);
           break;
       case ('wR'):
-          return rookMoveValid(key,x,y);
+          return rookMoveValid(selectSquare,x,y);
           break;
       case('bR'):
-          return rookMoveValid(key,x,y);
+          return rookMoveValid(selectSquare,x,y);
           break;
       case ('bB'):
-          return bishopMoveValid(key,x,y);
+          return bishopMoveValid(selectSquare,x,y);
           break;
       case ('wB'):
-          return bishopMoveValid(key,x,y);
+          return bishopMoveValid(selectSquare,x,y);
           break;
       case ('bN'):
-            return knightMoveValid(key,x,y);
+            return knightMoveValid(selectSquare,x,y);
             break;
       case ('wN'):
-            return knightMoveValid(key,x,y);
+            return knightMoveValid(selectSquare,x,y);
             break;
       case ('wQ'):
-            return(rookMoveValid(key,x,y) ||bishopMoveValid(key,x,y));
+            return(rookMoveValid(selectSquare,x,y) ||bishopMoveValid(selectSquare,x,y));
             break;
       case ('bQ'):
-            return(rookMoveValid(key,x,y) ||bishopMoveValid(key,x,y));
+            return(rookMoveValid(selectSquare,x,y) ||bishopMoveValid(selectSquare,x,y));
             break;
 
       default:
