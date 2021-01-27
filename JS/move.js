@@ -12,7 +12,7 @@ function select(x,y){
         };
         update();
         selected = true;
-        flag = key[0];
+        flag = key;
         return;
 
       }
@@ -32,52 +32,36 @@ function select(x,y){
 
 
 function move(x,y,piece){
-  for(const key in pieces){
-    pieces[key].forEach((item, i) => {
-      if(item.pos.x ==x && item.pos.y == y){
-        isCapture = key[0] == flag ? false:true
-        if(!isCapture){
-          selected = false;
-          selectSquare = [];
-          return 0;
-        }
-        if(moveValidator(piece.key , x,y,isCapture)){
-        pieces[key].splice(i,1);
-        update();
-
-
-      }
-
-
-    }});
-
+  let existing = matrix[x][y];
+  if(moveValidator(piece.key,x,y)){
+    if(existing !=0 && existing[0] == flag[0] ){
+      return 0;
     }
-    if(selected == true && moveValidator(piece.key , x,y,isCapture)){
+    if(existing != 0 && existing[0] != flag[0]){
+      for(let i= 0 ; i<pieces[existing].length ; i++){
+        if(pieces[existing][i].pos.x == x && pieces[existing][i].pos.y == y){
+          pieces[existing].splice(i,1)
 
+        }
+      }
+    }
 
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
-    checkPromotion(piece,x,y);
-    turn = turn == 'w'? 'b':'w';
-    isCapture = false;
-
+    turn =  turn == 'w'? 'b':'w';
     updateMatrix();
     moveGenerator();
     check();
     update();
   }
-  else{
-    isCapture = false;
-    update();
-    return 0 ;
-  }
-
   }
 
 
 
 
-  function moveValidator(key,x,y,isCapture){
+
+
+  function moveValidator(key,x,y){
     switch(key){
       case('wP'):
         return pawnMoveValid(selectSquare,key,x,y)
