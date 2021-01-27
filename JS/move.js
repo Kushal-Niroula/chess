@@ -32,6 +32,14 @@ function select(x,y){
 
 
 function move(x,y,piece){
+  let counter = 0;
+  let tempCap =0;
+  let mirror ={}
+  if(isCheck == 'w' || isCheck == 'b'){
+    counter =  1;
+
+
+  }
   let existing = matrix[x][y];
   if(moveValidator(piece.key,x,y)){
     if(existing !=0 && existing[0] == flag[0] ){
@@ -40,21 +48,52 @@ function move(x,y,piece){
     if(existing != 0 && existing[0] != flag[0]){
       for(let i= 0 ; i<pieces[existing].length ; i++){
         if(pieces[existing][i].pos.x == x && pieces[existing][i].pos.y == y){
+          tempCap = i
           pieces[existing].splice(i,1)
 
         }
       }
     }
 
+
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
-    turn =  turn == 'w'? 'b':'w';
     updateMatrix();
     moveGenerator();
     check();
+    if(isCheck && counter == 1){
+      pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
+      pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
+      if(tempCap !=0){
+        let isrc = existing + '1';
+        pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
+      }
+
+      turn =  turn == 'w'?'b':'w';
+    }
+
+    turn = turn == 'w'?'b':'w';
+
+    if(isCheck != 0 && isCheck != turn){
+      pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
+      pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
+      if(tempCap !=0){
+        let isrc = existing + '1';
+        pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
+      }
+
+      turn =  turn == 'w'?'b':'w';
+
+    }
+    updateMatrix();
+    moveGenerator();
+    check();
+
+    }
+
     update();
   }
-  }
+
 
 
 

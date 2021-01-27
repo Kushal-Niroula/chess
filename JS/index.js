@@ -13,18 +13,18 @@ var castle = false;
 var isCheck = false;
 var whiteMoves = [];
 var blackMoves = [];
-const b1P = document.getElementById('blackPawn');
-const b1K = document.getElementById('blackKing');
-const b1N = document.getElementById('blackKnight');
-const b1B = document.getElementById('blackBishop');
-const b1Q = document.getElementById('blackQueen');
-const b1R = document.getElementById('blackRook');
-const w1P = document.getElementById('whitePawn');
-const w1K = document.getElementById('whiteKing');
-const w1N = document.getElementById('whiteKnight');
-const w1B = document.getElementById('whiteBishop');
-const w1Q = document.getElementById('whiteQueen');
-const w1R = document.getElementById('whiteRook');
+const bP1 = document.getElementById('blackPawn');
+const bK1 = document.getElementById('blackKing');
+const bN1 = document.getElementById('blackKnight');
+const bB1 = document.getElementById('blackBishop');
+const bQ1 = document.getElementById('blackQueen');
+const bR1 = document.getElementById('blackRook');
+const wP1 = document.getElementById('whitePawn');
+const wK1 = document.getElementById('whiteKing');
+const wN1 = document.getElementById('whiteKnight');
+const wB1 = document.getElementById('whiteBishop');
+const wQ1 = document.getElementById('whiteQueen');
+const wR1 = document.getElementById('whiteRook');
 
 
 document.addEventListener('DOMContentLoaded' , function(){
@@ -35,21 +35,21 @@ document.addEventListener('DOMContentLoaded' , function(){
 
 
 
-var pieces = {bP:[{img:b1P,pos:{x:0, y:1}}, {img:b1P,pos:{x:1, y:1}} , {img:b1P,pos:{x:2, y:1}} , {img:b1P,pos:{x:3, y:1}} ,
-          {img:b1P,pos:{x:4, y:1}} , {img:b1P,pos:{x:5, y:1}} , {img:b1P,pos:{x:6, y:1}} , {img:b1P,pos:{x:7, y:1}}],
-          bK : [{img:b1K, pos:{x:4 , y:0} , move:false}],
-          bN : [{img:b1N , pos:{x:1, y:0}} , {img:b1N , pos:{x:6,y:0}}],
-          bB : [{img:b1B, pos:{x:2 , y:0}} , {img:b1B , pos:{x:5 , y:0}}],
-          bQ : [{img:b1Q,pos:{x:3,y:0}}],
-          bR : [{img:b1R,pos:{x:0,y:0}, move:false} ,{img:b1R,pos:{x:7 , y:0},move:false}],
+var pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,pos:{x:2, y:1}} , {img:bP1,pos:{x:3, y:1}} ,
+          {img:bP1,pos:{x:4, y:1}} , {img:bP1,pos:{x:5, y:1}} , {img:bP1,pos:{x:6, y:1}} , {img:bP1,pos:{x:7, y:1}}],
+          bK : [{img:bK1, pos:{x:4 , y:0} , move:false}],
+          bN : [{img:bN1 , pos:{x:1, y:0}} , {img:bN1 , pos:{x:6,y:0}}],
+          bB : [{img:bB1, pos:{x:2 , y:0}} , {img:bB1 , pos:{x:5 , y:0}}],
+          bQ : [{img:bQ1,pos:{x:3,y:0}}],
+          bR : [{img:bR1,pos:{x:0,y:0}, move:false} ,{img:bR1,pos:{x:7 , y:0},move:false}],
 
-          wP : [{img:w1P,pos:{x:0, y:6}}, {img:w1P,pos:{x:1, y:6}} , {img:w1P,pos:{x:2, y:6}} , {img:w1P,pos:{x:3, y:6}} ,
-          {img:w1P,pos:{x:4, y:6}} , {img:w1P,pos:{x:5, y:6}} , {img:w1P,pos:{x:6, y:6}} , {img:w1P,pos:{x:7, y:6}}],
-          wK : [{img:w1K, pos:{x:4 , y:7} , move:0}],
-          wN : [{img:w1N , pos:{x:1, y:7}} , {img:w1N , pos:{x:6,y:7}}],
-          wB : [{img:w1B, pos:{x:2 , y:7}} , {img:w1B , pos:{x:5 , y:7}}],
-          wQ : [{img:w1Q,pos:{x:3,y:7}}],
-          wR : [{img:w1R,pos:{x:0,y:7},move:false} ,{img:w1R,pos:{x:7 , y:7},move:false}] }
+          wP : [{img:wP1,pos:{x:0, y:6}}, {img:wP1,pos:{x:1, y:6}} , {img:wP1,pos:{x:2, y:6}} , {img:wP1,pos:{x:3, y:6}} ,
+          {img:wP1,pos:{x:4, y:6}} , {img:wP1,pos:{x:5, y:6}} , {img:wP1,pos:{x:6, y:6}} , {img:wP1,pos:{x:7, y:6}}],
+          wK : [{img:wK1, pos:{x:4 , y:7} , move:0}],
+          wN : [{img:wN1 , pos:{x:1, y:7}} , {img:wN1 , pos:{x:6,y:7}}],
+          wB : [{img:wB1, pos:{x:2 , y:7}} , {img:wB1 , pos:{x:5 , y:7}}],
+          wQ : [{img:wQ1,pos:{x:3,y:7}}],
+          wR : [{img:wR1,pos:{x:0,y:7},move:false} ,{img:wR1,pos:{x:7 , y:7},move:false}] }
 
 var matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
