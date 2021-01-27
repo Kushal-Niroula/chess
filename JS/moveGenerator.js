@@ -25,15 +25,19 @@ function moveGenerator(){
 
 
 function generatePawnMove(key,x,y){
+
+
   for(let k = x-1 ; k < x + 2; k++){
     for(let l = y-2;l<=y+2;l++){
       if(k>=0 && k<= 7 && l<=7 && l>=0){
       if(pawnMoveValid([{x:x,y:y}],key,k,l)){
         if(key[0] == 'w'){
           whiteMoves.push({x:k,y:l,piece:'p'});
+
         }
         if(key[0] == 'b'){
           blackMoves.push({x:k ,y:l,piece:'p'});
+
         }
       }
     }

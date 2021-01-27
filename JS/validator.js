@@ -1,16 +1,18 @@
 
 
-function checkPromotion(piece,x,y){
-    if(piece.key == 'wP'){
-      if(y == 0){
-        pieces[piece.key].splice(piece.index,1);
-        pieces['wQ'].push({img:w1Q , pos:{x:x , y:y}})
+function checkPromotion(){
+    for(let i = 0 ;i<pieces['wP'].length;i++){
+      if(pieces['wP'][i].pos.y == 0){
+          pieces['wQ'].push({img:wQ1 , pos:{x:pieces['wP'][i].pos.x , y:0}})
+        pieces['wP'].splice(i,1);
+
       }
     }
-    if(piece.key == 'bP'){
-      if(y == 7){
-        pieces[piece.key].splice(piece.index,1);
-        pieces['bQ'].push({img:b1Q , pos:{x:x , y:y}});
+    for(let i = 0;i<pieces['bP'].length ; i++){
+      if(pieces['bP'][i].pos.y == 7){
+        pieces['bQ'].push({img:bQ1 , pos:{x:pieces['bP'][i].pos.x , y:7}});
+        pieces['bP'].splice(i,1);
+
       }
     }}
 

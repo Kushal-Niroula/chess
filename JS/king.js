@@ -30,3 +30,7 @@ function check(){
 
 
 }
+function checkGameover(){
+  return 0;
+
+}

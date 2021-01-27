@@ -21,7 +21,7 @@ function select(x,y){
 }}
 
   else{
-      move(x,y,selectedPiece);
+      move(x,y,selectedPiece,pieces);
 
       selected = false;
       selectSquare = [];
@@ -31,10 +31,9 @@ function select(x,y){
 
 
 
-function move(x,y,piece){
+function move(x,y,piece,pieces){
   let counter = 0;
   let tempCap =0;
-  let mirror ={}
   if(isCheck == 'w' || isCheck == 'b'){
     counter =  1;
 
@@ -61,6 +60,9 @@ function move(x,y,piece){
     updateMatrix();
     moveGenerator();
     check();
+    if(isCheck){
+      checkGameover();
+    }
     if(isCheck && counter == 1){
       pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
       pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
@@ -85,9 +87,11 @@ function move(x,y,piece){
       turn =  turn == 'w'?'b':'w';
 
     }
+    checkPromotion();
     updateMatrix();
     moveGenerator();
     check();
+
 
     }
 
