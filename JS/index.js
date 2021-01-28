@@ -2,6 +2,7 @@ canvas = document.getElementById('canvas');
 ctx = canvas.getContext('2d');
 canvas.height = 640;
 canvas.width = 640;
+var moveCount = 1;
 var player = -1;
 var selected = false;
 var selectSquare = [];

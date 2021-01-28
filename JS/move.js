@@ -21,6 +21,7 @@ function select(x,y){
 }}
 
   else{
+
       move(x,y,selectedPiece,pieces);
 
       selected = false;
@@ -57,12 +58,18 @@ function move(x,y,piece,pieces){
 
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
+    moveCount ++;
+
+    if(moveCount % 2 == 0){
+      turn = 'b';
+    }
+    else{
+      turn = 'w';
+    }
     updateMatrix();
     moveGenerator();
     check();
-    if(isCheck){
-      checkGameover();
-    }
+
     if(isCheck && counter == 1){
       pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
       pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
@@ -71,20 +78,19 @@ function move(x,y,piece,pieces){
         pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
       }
 
-      turn =  turn == 'w'?'b':'w';
+      moveCount--;
     }
-
-    turn = turn == 'w'?'b':'w';
 
     if(isCheck != 0 && isCheck != turn){
       pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
       pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
+      console.log('reached here');
       if(tempCap !=0){
         let isrc = existing + '1';
         pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
       }
 
-      turn =  turn == 'w'?'b':'w';
+      moveCount --;
 
     }
     checkPromotion();
@@ -94,6 +100,17 @@ function move(x,y,piece,pieces){
 
 
     }
+    if(moveCount % 2 == 0){
+      turn = 'b';
+    }
+    else{
+      turn = 'w';
+    }
+    if(turn == 'b'){
+      aiMoves();
+    }
+
+
 
     update();
   }

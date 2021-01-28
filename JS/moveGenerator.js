@@ -32,11 +32,11 @@ function generatePawnMove(key,x,y){
       if(k>=0 && k<= 7 && l<=7 && l>=0){
       if(pawnMoveValid([{x:x,y:y}],key,k,l)){
         if(key[0] == 'w'){
-          whiteMoves.push({x:k,y:l,piece:'p'});
+          whiteMoves.push({x:k,y:l,piece:key + x + y});
 
         }
         if(key[0] == 'b'){
-          blackMoves.push({x:k ,y:l,piece:'p'});
+          blackMoves.push({x:k ,y:l,piece: key + x + y});
 
         }
       }
@@ -53,10 +53,10 @@ function generateBishopMove(key,x,y){
 
       if(bishopMoveValid([{x:x,y:y}],i,j)){
         if(key[0] == 'w'){
-          whiteMoves.push({x:i , y:j,piece:'b'})
+          whiteMoves.push({x:i , y:j,piece:key + x + y})
         }
         if(key[0] == 'b'){
-          blackMoves.push({x:i , y:j ,piece:'b'})
+          blackMoves.push({x:i , y:j ,piece: key + x +y })
         }
       }
     }
@@ -68,10 +68,10 @@ function generateRookMove(key,x,y){
     for(let j = 0; j<=7;j++){
       if(rookMoveValid([{x:x,y:y}],i,j)){
         if(key[0]=='w'){
-          whiteMoves.push({x:i,y:j,piece:'r'})
+          whiteMoves.push({x:i,y:j,piece: key + x + y })
         }
         if(key[0] == 'b'){
-          blackMoves.push({x:i,y:j,piece:'r'})
+          blackMoves.push({x:i,y:j,piece: key + x + y})
         }
       }
     }
@@ -84,10 +84,10 @@ for(let i = x-2 ;i<= x+2;i++){
     if(i<=7 && i>=0 && j<=7 && j>=0 && Math.abs(i) != Math.abs(j)){
       if(knightMoveValid([{x:x,y:y}],i,j)){
         if(key[0]=='w'){
-          whiteMoves.push({x:i,y:j,piece:'n'});
+          whiteMoves.push({x:i,y:j,piece: key + x + y});
         }
         if(key[0]=='b'){
-          blackMoves.push({x:i,y:j,piece:'n'});
+          blackMoves.push({x:i,y:j,piece: key + x + y});
         }
       }
     }
@@ -96,6 +96,29 @@ for(let i = x-2 ;i<= x+2;i++){
 }
 
 function generateQueenMove(key,x,y){
-  generateBishopMove(key,x,y);
-  generateRookMove(key,x,y);
+  for (let i = 0 ; i<=7 ; i++){
+    for(let j = 0;j<=7;j++){
+
+      if(bishopMoveValid([{x:x,y:y}],i,j)){
+        if(key[0] == 'w'){
+          whiteMoves.push({x:i , y:j,piece:key + x + y})
+        }
+        if(key[0] == 'b'){
+          blackMoves.push({x:i , y:j ,piece: key + x +y })
+        }
+      }
+    }
+  }
+  for(let i = 0 ;i<=7 ; i++){
+    for(let j = 0; j<=7;j++){
+      if(rookMoveValid([{x:x,y:y}],i,j)){
+        if(key[0]=='w'){
+          whiteMoves.push({x:i,y:j,piece: key + x + y })
+        }
+        if(key[0] == 'b'){
+          blackMoves.push({x:i,y:j,piece: key + x + y})
+        }
+      }
+    }
+  }
 }
