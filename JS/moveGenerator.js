@@ -83,7 +83,7 @@ function generateRookMove(key,x,y){
         if(key[0] == 'b'){
           blackMoves.push({x:i,y:j,piece: key + x + y})
         }
-        
+        temp.push({x:i,y:j,piece:key+x+y});
       }
     }
   }

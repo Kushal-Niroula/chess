@@ -61,9 +61,13 @@ function move(x,y,piece,pieces){
   let existing = matrix[x][y];
 
   for(let i = 0; i<whiteMoves.length;i++){
-    if(x == whiteMoves[i].x && y == whiteMoves[i].y){
+    if(x == whiteMoves[i].x && y == whiteMoves[i].y && whiteMoves[i].piece.slice(0,2) == flag ){
+
+      if(parseInt(whiteMoves[i].piece[2]) == selectSquare[0].x && parseInt(whiteMoves[i].piece[3]) == selectSquare[0].y)
+      {
       validated = true;
     }
+  }
   }
 
 
@@ -82,7 +86,7 @@ function move(x,y,piece,pieces){
     }
 
 
-  
+
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
 
