@@ -29,7 +29,7 @@ function moveGenerator(){
 
 function generatePawnMove(key,x,y){
 
-
+let temp =[];
   for(let k = x-1 ; k < x + 2; k++){
     for(let l = y-2;l<=y+2;l++){
       if(k>=0 && k<= 7 && l<=7 && l>=0){
@@ -42,15 +42,19 @@ function generatePawnMove(key,x,y){
           blackMoves.push({x:k ,y:l,piece: key + x + y});
 
         }
+        temp.push({x:k ,y:l,piece: key + x + y});
       }
     }
   }
 
   }
+  return temp;
+
 }
 
 
 function generateBishopMove(key,x,y){
+  temp = [];
   for (let i = 0 ; i<=7 ; i++){
     for(let j = 0;j<=7;j++){
 
@@ -61,12 +65,15 @@ function generateBishopMove(key,x,y){
         if(key[0] == 'b'){
           blackMoves.push({x:i , y:j ,piece: key + x +y })
         }
+        temp.push({x:i , y:j ,piece: key + x +y })
       }
     }
   }
+  return temp;
   }
 
 function generateRookMove(key,x,y){
+  let temp =[];
   for(let i = 0 ;i<=7 ; i++){
     for(let j = 0; j<=7;j++){
       if(rookMoveValid([{x:x,y:y}],i,j)){
@@ -76,15 +83,18 @@ function generateRookMove(key,x,y){
         if(key[0] == 'b'){
           blackMoves.push({x:i,y:j,piece: key + x + y})
         }
+        
       }
     }
   }
+  return temp;
 }
 
 function generateKnightMove(key,x,y){
+  let temp = [];
 for(let i = x-2 ;i<= x+2;i++){
   for(let j= y-2 ; j<=y+2 ; j++){
-    if(i<=7 && i>=0 && j<=7 && j>=0 && Math.abs(i) != Math.abs(j)){
+    if(i<=7 && i>=0 && j<=7 && j>=0){
       if(knightMoveValid([{x:x,y:y}],i,j)){
         if(key[0]=='w'){
           whiteMoves.push({x:i,y:j,piece: key + x + y});
@@ -92,24 +102,30 @@ for(let i = x-2 ;i<= x+2;i++){
         if(key[0]=='b'){
           blackMoves.push({x:i,y:j,piece: key + x + y});
         }
+        temp.push({x:i,y:j,piece: key + x + y})
       }
     }
   }
 }
+return temp;
 }
 
 function generateQueenMove(key,x,y){
+  let temp=[];
   for (let i = 0 ; i<=7 ; i++){
     for(let j = 0;j<=7;j++){
 
       if(bishopMoveValid([{x:x,y:y}],i,j)){
         if(key[0] == 'w'){
-          whiteMoves.push({x:i , y:j,piece:key + x + y})
+          whiteMoves.push({x:i , y:j,piece:key + x + y});
+
         }
         if(key[0] == 'b'){
           blackMoves.push({x:i , y:j ,piece: key + x +y })
         }
+        temp.push({x:i , y:j,piece:key + x + y});
       }
+
     }
   }
   for(let i = 0 ;i<=7 ; i++){
@@ -121,13 +137,16 @@ function generateQueenMove(key,x,y){
         if(key[0] == 'b'){
           blackMoves.push({x:i,y:j,piece: key + x + y})
         }
+        temp.push({x:i,y:j,piece: key + x + y});
       }
     }
   }
+  return temp;
 }
 
 
 function generateKingMove(key,x,y){
+  let temp=[]
   for (let i = -1 ; i<=1 ; i++){
     for (let j = -1; j<=1;j++){
       if((x+i)<=7 && (x+1)>=0 && (y+j)<=7 && (y+j>=0)){
@@ -138,8 +157,10 @@ function generateKingMove(key,x,y){
           if(key[0]=='b'){
             blackMoves.push({x:x+i,y:y+j,piece:key+x+y})
           }
+          temp.push({x:x+i,y:y+j,piece:key+x+y})
         }
       }
     }
   }
+  return temp;
 }

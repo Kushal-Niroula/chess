@@ -39,7 +39,7 @@ if(isCheck == 'b'){
       }
     });
 }
-
+try{
 if(matrix[obj.x][obj.y] != 0){
   if(matrix[obj.x][obj.y][0] == selectedPiece.key[0]){
 
@@ -75,6 +75,7 @@ if(matrix[obj.x][obj.y] != 0){
     }
   }
 
+
 else{
   pieces[selectedPiece.key][selectedPiece.index].pos.x = obj.x;
   pieces[selectedPiece.key][selectedPiece.index].pos.y = obj.y;
@@ -92,6 +93,10 @@ else{
   }
 }
 
+}
+finally{
+  continue;
+}
 }
 
 

@@ -10,6 +10,28 @@ function select(x,y){
           key:key,
           index:i
         };
+
+        if(key == 'wP' || key == 'bP'){
+          dots = generatePawnMove(key,x,y);
+        }
+        if(key == 'wB' || key == 'bB'){
+          dots = generateBishopMove(key,x,y);
+        }
+        if(key == 'wK' || key == 'bK'){
+          dots = generateKingMove(key,x,y);
+        }
+        if(key == 'wR' || key =='bR'){
+          dots = generateRookMove(key,x,y);
+        }
+        if(key == 'wN' || key == 'bN'){
+          dots = generateKnightMove(key,x,y);
+        }
+        if(key == 'wQ' || key == 'bQ'){
+          dots = generateQueenMove(key,x,y);
+
+        }
+
+
         update();
         selected = true;
         flag = key;
@@ -34,25 +56,36 @@ function select(x,y){
 
 function move(x,y,piece,pieces){
   let tempCap =0;
+  let validated = false;
 
   let existing = matrix[x][y];
-  if(moveValidator(piece.key,x,y)){
+
+  for(let i = 0; i<whiteMoves.length;i++){
+    if(x == whiteMoves[i].x && y == whiteMoves[i].y){
+      validated = true;
+    }
+  }
+
+
+    if (validated){
     if(existing !=0 && existing[0] == flag[0] ){
       return 0;
     }
     if(existing != 0 && existing[0] != flag[0]){
       for(let i= 0 ; i<pieces[existing].length ; i++){
         if(pieces[existing][i].pos.x == x && pieces[existing][i].pos.y == y){
-          tempCap = i
-          pieces[existing].splice(i,1)
+          tempCap = i;
+          pieces[existing].splice(i,1);
 
         }
       }
     }
 
 
+  
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
+
     moveCount ++;
 
     if(moveCount % 2 == 0){
@@ -64,6 +97,8 @@ function move(x,y,piece,pieces){
     updateMatrix();
     moveGenerator();
     check();
+
+
 
     if(isCheck == 'w'){
       pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
@@ -90,13 +125,14 @@ function move(x,y,piece,pieces){
     else{
       turn = 'w';
     }
+    update();
     if(turn == 'b'){
       aiMoves();
     }
 
 
 
-    update();
+
   }
 
 

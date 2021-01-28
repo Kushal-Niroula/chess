@@ -4,8 +4,10 @@ function check(){
 
   let wx = pieces['wK'][0].pos.x;
   let wy = pieces['wK'][0].pos.y;
+
   for( let l = 0 ; l<blackMoves.length ; l++){
     if (wx == blackMoves[l].x && wy == blackMoves[l].y){
+      
       isCheck = 'w';
       return 0;
 
