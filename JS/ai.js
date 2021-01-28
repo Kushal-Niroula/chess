@@ -1,15 +1,27 @@
 function aiMoves(){
   let loop = true;
-
-
+let iterator = 0;
+let obj = {}
 
   while(loop == true){
+
   updateMatrix();
   moveGenerator();
+  check();
 
 
-  let i = Math.floor(Math.random()*blackMoves.length)
-  let obj = blackMoves[i];
+if(isCheck != 'b'){
+  iterator = Math.floor(Math.random()*blackMoves.length)
+}
+if(isCheck == 'b'){
+  if(iterator >=blackMoves.length-1){
+    window.alert('i lost');
+    return(0);
+  }
+  iterator ++;
+}
+
+  obj = blackMoves[iterator];
   objx = parseInt(obj.piece[obj.piece.length-2]);
   objy = parseInt(obj.piece[obj.piece.length-1]);
 
@@ -32,15 +44,17 @@ if(matrix[obj.x][obj.y] != 0){
   if(matrix[obj.x][obj.y][0] == selectedPiece.key[0]){
 
     loop = true;
+    continue;
 
   }
-  else{
+  if(matrix[obj.x][obj.y][0] != selectedPiece.key[0]){
+    let ik= matrix[obj.x][obj.y];
     let temp = pieces[matrix[obj.x][obj.y]];
     for (let i = 0; i<temp.length ; i++){
       if(temp.length >0 && temp[i]){
 
       if(temp[i].pos.x == obj.x && temp[i].pos.y == obj.y){
-        let add = temp.splice(i,1);
+        temp.splice(i,1);
         pieces[selectedPiece.key][selectedPiece.index].pos.x = obj.x;
         pieces[selectedPiece.key][selectedPiece.index].pos.y = obj.y;
         loop = false;
@@ -49,7 +63,7 @@ if(matrix[obj.x][obj.y] != 0){
         moveGenerator();
         check();
         if(isCheck == 'b'){
-          temp.push(add);
+          pieces[ik].push({img:eval(ik + 1),pos:{x:obj.x,y:obj.y}});
           pieces[selectedPiece.key][selectedPiece.index].pos.x = objx;
           pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;
           moveCount = moveCount -1;
@@ -83,6 +97,7 @@ else{
 
 selectSquare = [];
 selected = false;
+checkPromotion();
 updateMatrix();
 update();
 

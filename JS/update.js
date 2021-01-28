@@ -29,7 +29,7 @@ drawSelect();
 function updateMatrix(){
   matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
-  for(key in pieces){
+  for(let key in pieces){
     pieces[key].forEach((item, i) => {
       matrix[item.pos.x][item.pos.y] = key;
     });
