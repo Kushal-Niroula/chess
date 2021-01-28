@@ -33,13 +33,8 @@ function select(x,y){
 
 
 function move(x,y,piece,pieces){
-  let counter = 0;
   let tempCap =0;
-  if(isCheck == 'w' || isCheck == 'b'){
-    counter =  1;
 
-
-  }
   let existing = matrix[x][y];
   if(moveValidator(piece.key,x,y)){
     if(existing !=0 && existing[0] == flag[0] ){
@@ -70,7 +65,7 @@ function move(x,y,piece,pieces){
     moveGenerator();
     check();
 
-    if(isCheck && counter == 1){
+    if(isCheck == 'w'){
       pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
       pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
       if(tempCap !=0){
@@ -81,18 +76,7 @@ function move(x,y,piece,pieces){
       moveCount--;
     }
 
-    if(isCheck != 0 && isCheck != turn){
-      pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
-      pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
-      console.log('reached here');
-      if(tempCap !=0){
-        let isrc = existing + '1';
-        pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
-      }
 
-      moveCount --;
-
-    }
     checkPromotion();
     updateMatrix();
     moveGenerator();

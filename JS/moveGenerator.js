@@ -18,6 +18,9 @@ function moveGenerator(){
         if(key == 'wQ' || key == 'bQ'){
          generateQueenMove(key,pieces[key][i].pos.x , pieces[key][i].pos.y);
         }
+        if(key == 'wK' || key == "bK"){
+          generateKingMove(key,pieces[key][i].pos.x , pieces[key][i].pos.y)
+        }
     }
   }
 }
@@ -117,6 +120,24 @@ function generateQueenMove(key,x,y){
         }
         if(key[0] == 'b'){
           blackMoves.push({x:i,y:j,piece: key + x + y})
+        }
+      }
+    }
+  }
+}
+
+
+function generateKingMove(key,x,y){
+  for (let i = -1 ; i<=1 ; i++){
+    for (let j = -1; j<=1;j++){
+      if((x+i)<=7 && (x+1)>=0 && (y+j)<=7 && (y+j>=0)){
+        if(kingMoveValid([{x:x,y:y}],x+i,y+j)){
+          if(key[0] == 'w'){
+            whiteMoves.push({x:x+i,y:y+j,piece:key+x+y})
+          }
+          if(key[0]=='b'){
+            blackMoves.push({x:x+i,y:y+j,piece:key+x+y})
+          }
         }
       }
     }
