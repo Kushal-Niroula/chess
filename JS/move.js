@@ -55,6 +55,7 @@ function select(x,y){
 
 
 function move(x,y,piece,pieces){
+  let castleFlag = false;
   let tempCap =0;
   let validated = false;
 
@@ -87,10 +88,12 @@ function move(x,y,piece,pieces){
 
 
 
+
     pieces[piece.key][piece.index].pos.x = x;
     pieces[piece.key][piece.index].pos.y = y;
 
     moveCount ++;
+
 
     if(moveCount % 2 == 0){
       turn = 'b';
@@ -111,9 +114,29 @@ function move(x,y,piece,pieces){
         let isrc = existing + '1';
         pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
       }
+      if(castleFlag == true){
+        if(selectSquare[0].x == x - 2){
+        pieces[piece.key[0]+'R'][1].pos.x = 7
+      }
+      else{
+        pieces[piece.key[0]+'R'][0].pos.x = 0;
+      }
+      }
 
       moveCount--;
     }
+    if(isCheck != 'w' && (piece.key =='wK'|| piece.key == 'bK') && (x == selectSquare[0].x+2 || x == selectSquare[0].x -2) ){
+      castleFunction(x,y,piece);
+    }
+    if(isCheck != 'w' && (piece.key == 'wK' || piece.key == 'bK')){
+      pieces[piece.key][piece.index].move = 1
+
+    }
+    if(isCheck != 'w' && (piece.key == 'wR' || piece.key == 'bR')){
+      pieces[piece.key][piece.index].move = 1
+
+    }
+
 
 
     checkPromotion();

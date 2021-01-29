@@ -20,11 +20,12 @@ for (var i = 0 ; i<=8; i++)
 }
 
 
-
+drawDots();
 drawPos();
+
 drawCheck();
 drawSelect();
-drawDots();
+
 }
 
 function updateMatrix(){

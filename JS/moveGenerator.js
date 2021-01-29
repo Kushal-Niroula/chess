@@ -147,9 +147,9 @@ function generateQueenMove(key,x,y){
 
 function generateKingMove(key,x,y){
   let temp=[]
-  for (let i = -1 ; i<=1 ; i++){
-    for (let j = -1; j<=1;j++){
-      if((x+i)<=7 && (x+1)>=0 && (y+j)<=7 && (y+j>=0)){
+  for (let i = -2 ; i<=2 ; i++){
+    for (let j = -2; j<=2;j++){
+      if((x+i)<=7 && (x+i)>=0 && (y+j)<=7 && (y+j>=0)){
         if(kingMoveValid([{x:x,y:y}],x+i,y+j)){
           if(key[0] == 'w'){
             whiteMoves.push({x:x+i,y:y+j,piece:key+x+y})

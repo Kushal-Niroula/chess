@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded' , function(){
   setTimeout(moveGenerator,2000);
 },false);
 
-
+var value ={p:100 , b:350 ,n:325 , q:970 , r:470};
 
 
 var pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,pos:{x:2, y:1}} , {img:bP1,pos:{x:3, y:1}} ,

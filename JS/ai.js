@@ -10,6 +10,7 @@ let obj = {}
   check();
 
 
+
 if(isCheck != 'b'){
   iterator = Math.floor(Math.random()*blackMoves.length)
 }
@@ -83,12 +84,25 @@ else{
   moveCount++;
   updateMatrix();
   moveGenerator();
+
   check();
   if(isCheck == 'b'){
     pieces[selectedPiece.key][selectedPiece.index].pos.x = objx;
     pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;
     moveCount = moveCount -1;
     loop = true;
+
+  }
+
+  if(isCheck != 'b' && (piece.key =='wK'|| piece.key == 'bK') && (x == selectSquare[0].x+2 || x == selectSquare[0].x -2) ){
+    castleFunction(x,y,piece);
+  }
+  if(isCheck != 'b' && (piece.key == 'wK' || piece.key == 'bK')){
+    pieces[piece.key][piece.index].move = 1
+
+  }
+  if(isCheck != 'b' && (piece.key == 'wR' || piece.key == 'bR')){
+    pieces[piece.key][piece.index].move = 1
 
   }
 }

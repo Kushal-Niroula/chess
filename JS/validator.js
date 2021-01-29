@@ -23,14 +23,49 @@ function checkPromotion(){
           return true;
         }
       }
-      else if( x == selectSquare[0].x){
+       if( x == selectSquare[0].x){
         if(y == selectSquare[0].y +1 || y == selectSquare[0].y -1){
           return true;
         }
       }
-      else{
-        return false;
+
+      if(selectSquare[0].x == 4 && selectSquare[0].y == 7){
+        if(x == 6 && y == 7){
+          if(pieces['wK'][0].move == 0 && pieces['wR'][1].move == 0){
+            if (matrix[5][7] == 0 && matrix [6][7] == 0){
+              return true;
+            }
+
+          }
+        }
+        if(x == 2 && y == 7){
+          if(pieces['wK'][0].move ==0 && pieces['wR'][1].move == 0){
+            if(matrix[1][7] == 0 && matrix [2][7] == 0 && matrix[3][7] == 0){
+              return true;
+            }
+          }
+        }
       }
+      if(selectSquare[0].x == 4 && selectSquare[0].y == 0){
+        if(x == 6 && y == 0){
+          if(pieces['bK'][0].move == 0 && pieces['bR'][1].move == 0){
+            if (matrix[5][0] == 0 && matrix [6][0] == 0){
+              return true;
+            }
+
+          }
+        }
+        if(x == 2 && y == 0){
+          if(pieces['bK'][0].move ==0 && pieces['bR'][1].move == 0){
+            if(matrix[1][0] == 0 && matrix [2][0] == 0 && matrix[3][0] == 0){
+              return true;
+            }
+          }
+        }
+      }
+
+
+      return false;
     }
 
 

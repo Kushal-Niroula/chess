@@ -20,10 +20,12 @@ function drawCheck(){
   }
 }
 function drawDots(){
-  ctx.strokeStyle = "blue";
+  ctx.fillStyle = "green";
   if(dots.length>=1){
   for(let i = 0; i<dots.length ; i++ ){
-    ctx.strokeRect(dots[i].x * 80 ,dots[i].y * 80 ,80 ,80);
+    ctx.beginPath();
+    ctx.arc(dots[i].x * 80+43 ,dots[i].y * 80+40 ,5 , 0 , 2*Math.PI);
+    ctx.fill();
 
   }
 }

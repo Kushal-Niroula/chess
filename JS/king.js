@@ -7,7 +7,7 @@ function check(){
 
   for( let l = 0 ; l<blackMoves.length ; l++){
     if (wx == blackMoves[l].x && wy == blackMoves[l].y){
-      
+
       isCheck = 'w';
       return 0;
 
@@ -32,7 +32,13 @@ function check(){
 
 
 }
-function checkGameover(){
-  return 0;
+function castleFunction(x,y,piece){
 
-}
+    if(x == selectSquare[0].x + 2 ){
+      pieces[piece.key[0]+'R'][1].pos.x = pieces[piece.key[0]+'R'][1].pos.x - 2;
+    }
+    else{
+      pieces[piece.key[0]+'R'][0].pos.x = pieces[piece.key[0]+'R'][0].pos.x + 3;
+    }
+    castle = false;
+  }
