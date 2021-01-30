@@ -1,4 +1,5 @@
 function gameSearch(pos,turn){
+
   let obj ={}
   let randomObj ={}
 
@@ -7,22 +8,36 @@ function gameSearch(pos,turn){
   let pieceKey;
   let indexPiece;
   let maxValue;
+  let counter ;
   if(turn == 'b'){
+
     maxValue = -10000;
+    counter = blackMoves.length;
+
   }
-  else{
+  if(turn == 'w'){
+
     maxValue = 10000;
+    counter = whiteMoves.length;
   }
 
 
-  for(let i = 0 ; i < blackMoves.length ; i++ ){
+  for(let i = 0 ; i < counter ; i++ ){
+
   position = JSON.parse(JSON.stringify(pos))
   updateMatrix(position);
   moveGenerator(position);
   check(position);
 
+
     if(turn == 'b'){
+
       obj = blackMoves[i];
+
+    }
+    if(turn == 'w'){
+      obj = whiteMoves[i];
+
     }
     objx = parseInt(obj.piece[obj.piece.length-2]);
     objy = parseInt(obj.piece[obj.piece.length-1]);
@@ -40,7 +55,7 @@ function gameSearch(pos,turn){
       });
   }
 
-  try{
+
   if(matrix[obj.x][obj.y] != 0){
 
     if(matrix[obj.x][obj.y][0] == selectedPiece.key[0]){
@@ -70,7 +85,7 @@ function gameSearch(pos,turn){
       moveGenerator(position);
       check(position);
 
-      if(isCheck){
+      if(isCheck == turn){
         continue;
       }
     }
@@ -79,6 +94,7 @@ function gameSearch(pos,turn){
 
 
   else{
+
     position[selectedPiece.key][selectedPiece.index].pos.x = obj.x;
     position[selectedPiece.key][selectedPiece.index].pos.y = obj.y;
 
@@ -87,43 +103,48 @@ function gameSearch(pos,turn){
     check(position);
 
 
-    if(isCheck == 'b'){
+    if(isCheck == turn){
       continue;
 }
 
 
 
   }
+
   updateMatrix(position);
   moveGenerator(position);
   check(position);
 
-  if(turn == 'b'){
 
-    if(evaluatePos() > maxValue){
-      max = obj;
-      maxValue = evaluatePos();
 
-    }
-}
 if(turn == 'w'){
-  if(evaluatePos()<maxValue){
-    maxValue = evaluatePos()
-    max = whiteMoves[i];
+
+  if(evaluatePos() < maxValue){
+    maxValue = evaluatePos();
+    max = obj;
+}
+}
+
+  if (recursion == 0){
+
+    recursion = 1;
+    let temp = gameSearch(JSON.parse(JSON.stringify(position)),'w');
+    if(temp>maxValue){
+      maxValue = temp;
+      max = obj
+    }
+    recursion = 0
 
   }
+
 
 
 }
+
+
+if(turn == 'w'){
+  return maxValue;
 }
-  finally{
-    continue;
-  }
-
-
-
-  }
-
 
 if(maxValue != -10000){
   return max;
@@ -159,10 +180,12 @@ return 0;
         min = min + value.p;
         min = min + wPMatrix[l][m]
 
+
       }
       if(matrix[l][m] == 'wB'){
         min = min + value.b;
         min = min + wBMatrix[l][m];
+
       }
       if(matrix[l][m] == 'bB'){
         max = max + value.b;
@@ -170,7 +193,9 @@ return 0;
       }
       if(matrix[l][m] == 'wN'){
         min = min + value.n;
+    
         min = min + wNMatrix[l][m];
+
       }
       if(matrix[l][m] == 'bN'){
         max = max + value.n;
@@ -180,6 +205,7 @@ return 0;
       if(matrix[l][m] == 'wR'){
         min = min + value.r;
         min = min + wRMatrix[l][m];
+
       }
       if(matrix[l][m] == 'bR'){
         max = max + value.r;
@@ -188,6 +214,7 @@ return 0;
       if(matrix[l][m] == 'wQ'){
         min = min + value.q;
         min = min + wQMatrix[l][m];
+
       }
       if(matrix[l][m] == 'bQ'){
         max = max + value.q;

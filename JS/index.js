@@ -15,6 +15,7 @@ var isCheck = 0;
 var whiteMoves = [];
 var blackMoves = [];
 var dots = [];
+var recursion = 0;
 var bPMatrix = [];
 var wPMatrix = [];
 var bBMatrix = [];
@@ -67,6 +68,7 @@ var pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,
 
 var matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 initializeEvaluationMatrix();
+
 updateMatrix();
 
 canvas.addEventListener('click',handleClick);

@@ -6,7 +6,7 @@ let objIndex;
 
 let obj = gameSearch(position,'b')
 if(obj == 0){
-  window.alert('I lost');
+  console.log('i lost');
   return 0;
 }
 updateMatrix(pieces);
