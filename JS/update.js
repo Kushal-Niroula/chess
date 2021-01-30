@@ -28,7 +28,7 @@ drawSelect();
 
 }
 
-function updateMatrix(){
+function updateMatrix(pieces){
   matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 
   for(let key in pieces){

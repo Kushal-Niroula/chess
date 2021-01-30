@@ -15,6 +15,18 @@ var isCheck = 0;
 var whiteMoves = [];
 var blackMoves = [];
 var dots = [];
+var bPMatrix = [];
+var wPMatrix = [];
+var bBMatrix = [];
+var wBMatrix = [];
+var bRMatrix = [];
+var wRMatrix = [];
+var bNMatrix = [];
+var wNMatrix = [];
+var bQMatrix = [];
+var wQMatrix = [];
+var bKMatrix = [];
+var wKMatrix = [];
 const bP1 = document.getElementById('blackPawn');
 const bK1 = document.getElementById('blackKing');
 const bN1 = document.getElementById('blackKnight');
@@ -54,7 +66,7 @@ var pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,
           wR : [{img:wR1,pos:{x:0,y:7},move:false} ,{img:wR1,pos:{x:7 , y:7},move:false}] }
 
 var matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
-
+initializeEvaluationMatrix();
 updateMatrix();
 
 canvas.addEventListener('click',handleClick);

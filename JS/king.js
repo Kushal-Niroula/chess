@@ -1,5 +1,5 @@
 
-function check(){
+function check(pieces){
   isCheck = 0;
 
   let wx = pieces['wK'][0].pos.x;

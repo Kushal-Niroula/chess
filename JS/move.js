@@ -5,7 +5,7 @@ function select(x,y){
     if(key[0]==turn){
     pieces[key].forEach((item, i) => {
       if(item.pos.x == x && item.pos.y ==y){
-        selectSquare.push({x:x , y:y});
+        selectSquare[0]={x:x , y:y};
         selectedPiece = {
           key:key,
           index:i
@@ -55,10 +55,11 @@ function select(x,y){
 
 
 function move(x,y,piece,pieces){
-  let castleFlag = false;
+
   let tempCap =0;
   let validated = false;
-
+  updateMatrix(pieces);
+  moveGenerator(pieces);
   let existing = matrix[x][y];
 
   for(let i = 0; i<whiteMoves.length;i++){
@@ -73,7 +74,9 @@ function move(x,y,piece,pieces){
 
 
     if (validated){
+
     if(existing !=0 && existing[0] == flag[0] ){
+
       return 0;
     }
     if(existing != 0 && existing[0] != flag[0]){
@@ -101,9 +104,9 @@ function move(x,y,piece,pieces){
     else{
       turn = 'w';
     }
-    updateMatrix();
-    moveGenerator();
-    check();
+    updateMatrix(pieces);
+    moveGenerator(pieces);
+    check(pieces);
 
 
 
@@ -114,14 +117,7 @@ function move(x,y,piece,pieces){
         let isrc = existing + '1';
         pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
       }
-      if(castleFlag == true){
-        if(selectSquare[0].x == x - 2){
-        pieces[piece.key[0]+'R'][1].pos.x = 7
-      }
-      else{
-        pieces[piece.key[0]+'R'][0].pos.x = 0;
-      }
-      }
+
 
       moveCount--;
     }
@@ -139,10 +135,11 @@ function move(x,y,piece,pieces){
 
 
 
-    checkPromotion();
-    updateMatrix();
-    moveGenerator();
-    check();
+    checkPromotion(pieces);
+    updateMatrix(pieces);
+    moveGenerator(pieces);
+    check(pieces);
+    update();
 
 
     }
@@ -152,7 +149,7 @@ function move(x,y,piece,pieces){
     else{
       turn = 'w';
     }
-    update();
+
     if(turn == 'b'){
       aiMoves();
     }
