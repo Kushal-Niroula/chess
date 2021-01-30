@@ -1,4 +1,4 @@
-function gameSearch(pos,turn){
+function gameSearch(pos,turn,tempMax){
 
   let obj ={}
   let randomObj ={}
@@ -116,24 +116,85 @@ function gameSearch(pos,turn){
   check(position);
 
 
+if(recursion != 0){
 
 if(turn == 'w'){
 
   if(evaluatePos() < maxValue){
     maxValue = evaluatePos();
-    max = obj;
+
+}
+if(maxValue < tempMax){
+
+  break;
+}
+}
+if(turn == 'b'){
+  if(evaluatePos() > maxValue){
+    maxValue = evaluatePos();
+  }
+  if(maxValue > tempMax){
+    break;
+  }
 }
 }
 
   if (recursion == 0){
-
+    let pass = turn == 'b'?'w':'b';
     recursion = 1;
-    let temp = gameSearch(JSON.parse(JSON.stringify(position)),'w');
+    let temp = gameSearch(JSON.parse(JSON.stringify(position)),pass,maxValue);
+    if(turn == 'b'){
     if(temp>maxValue){
       maxValue = temp;
-      max = obj
+      max = obj;
     }
+  }
+  if(turn == 'w'){
+    if(temp<maxValue){
+      maxValue = temp;
+      max = obj;
+    }
+  }
     recursion = 0
+
+  }
+
+  if (recursion == 1){
+    let pass = turn == 'b'?'w':'b';
+    recursion = 2;
+    let temp = gameSearch(JSON.parse(JSON.stringify(position)),pass,maxValue);
+    if(turn == 'b'){
+    if(temp>maxValue){
+      maxValue = temp;
+    }
+  }
+  if(turn == 'w'){
+    if(temp < maxValue){
+      maxValue = temp;
+
+    }
+  }
+    recursion = 1;
+
+  }
+
+  if (recursion == 2){
+    let pass = turn == 'b'?'w':'b';
+    recursion = 3;
+    let temp = gameSearch(JSON.parse(JSON.stringify(position)),pass,maxValue);
+    if(turn == 'b'){
+    if(temp>maxValue){
+      maxValue = temp;
+
+    }
+  }
+  if(turn == 'w'){
+    if(temp<maxValue){
+      maxValue = temp;
+
+    }
+  }
+    recursion = 2;
 
   }
 
@@ -142,11 +203,11 @@ if(turn == 'w'){
 }
 
 
-if(turn == 'w'){
+if(recursion != 0){
   return maxValue;
 }
 
-if(maxValue != -10000){
+if(maxValue != -10000 && maxValue != 10000){
   return max;
 }
 return 0;
@@ -193,7 +254,7 @@ return 0;
       }
       if(matrix[l][m] == 'wN'){
         min = min + value.n;
-    
+
         min = min + wNMatrix[l][m];
 
       }
