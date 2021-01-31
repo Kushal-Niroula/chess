@@ -50,6 +50,10 @@ function select(x,y){
       selectSquare = [];
       update();
 
+      if(turn == 'b'){
+            setTimeout(aiMoves,0);
+          }
+
   }}
 
 
@@ -139,7 +143,7 @@ function move(x,y,piece,pieces){
     updateMatrix(pieces);
     moveGenerator(pieces);
     check(pieces);
-    update();
+
 
 
     }
@@ -150,9 +154,7 @@ function move(x,y,piece,pieces){
       turn = 'w';
     }
 
-    if(turn == 'b'){
-      aiMoves();
-    }
+
 
 
 
