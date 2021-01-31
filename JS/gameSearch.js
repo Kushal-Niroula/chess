@@ -111,33 +111,7 @@ function gameSearch(pos,turn,tempMax){
 
   }
 
-  updateMatrix(position);
-  moveGenerator(position);
-  check(position);
 
-
-if(recursion != 0){
-
-if(turn == 'w'){
-
-  if(evaluatePos() < maxValue){
-    maxValue = evaluatePos();
-
-}
-if(maxValue < tempMax){
-
-  break;
-}
-}
-if(turn == 'b'){
-  if(evaluatePos() > maxValue){
-    maxValue = evaluatePos();
-  }
-  if(maxValue > tempMax){
-    break;
-  }
-}
-}
 
   if (recursion == 0){
     let pass = turn == 'b'?'w':'b';
@@ -196,6 +170,31 @@ if(turn == 'b'){
   }
     recursion = 2;
 
+  }
+
+
+  if(recursion != 0){
+
+  if(turn == 'w'){
+
+    if(evaluatePos() < maxValue){
+
+      maxValue = evaluatePos();
+
+  }
+  if(maxValue < tempMax){
+
+    break;
+  }
+  }
+  if(turn == 'b'){
+    if(evaluatePos() > maxValue){
+      maxValue = evaluatePos();
+    }
+    if(maxValue > tempMax){
+      break;
+    }
+  }
   }
 
 
