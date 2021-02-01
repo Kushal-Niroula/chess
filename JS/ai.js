@@ -55,6 +55,7 @@ checkPromotion(pieces);;
 updateMatrix(pieces);
 moveGenerator(pieces);
 check(pieces);
+
 update(pieces);
 
 if(moveCount % 2 == 0){
@@ -62,6 +63,10 @@ if(moveCount % 2 == 0){
 }
 else{
   turn = 'w'
+}
+if(isCheck == 'w'){
+  console.log('reached');
+  gameOverEvaluation(pieces,true);
 }
 
 if(turn == 'b'){
@@ -88,10 +93,19 @@ let obj = {}
     check(pieces);
 
 
+    if(isCheck == 'b'){
   if(iterator >=blackMoves.length-1){
-    window.alert('i lost');
+    window.alert('I lost');
     return(0);
   }
+}
+if(isCheck == 'w'){
+if(iterator >=whiteMoves.length-1){
+window.alert('I won');
+return(0);
+}
+}
+
   iterator ++;
 
   if (turn == 'b'){
@@ -140,14 +154,21 @@ if(matrix[obj.x][obj.y] != 0){
         updateMatrix(pieces);
         moveGenerator(pieces);
         check(pieces);
-        if(isCheck == turn){
+        if(isCheck == turn || (isCheck != turn  && test == true)){
           pieces[ik].push({img:eval(ik + 1),pos:{x:obj.x,y:obj.y}});
           pieces[selectedPiece.key][selectedPiece.index].pos.x = objx;
           pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;
           moveCount = moveCount -1;
+
+          if(isCheck !=turn && test == true){
+            console.log(selectedPiece.key,objx,objy);
+            return ;
+          }
+
           loop = true;
 
         }
+
       }
     }}
     }
@@ -161,10 +182,14 @@ else{
   updateMatrix(pieces);
   moveGenerator(pieces);
   check(pieces);
-  if(isCheck == turn){
+  if(isCheck == turn || (isCheck != turn && test == true)){
     pieces[selectedPiece.key][selectedPiece.index].pos.x = objx;
     pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;
     moveCount = moveCount -1;
+    if(test == true && isCheck != turn){
+      console.log(selectedPiece.key,selectedPiece.index,objx,objy);
+      return 0;
+    }
     loop = true;
 
   }
@@ -176,8 +201,8 @@ else{
 selectSquare = [];
 selected = false;
 
-updateMatrix();
-update();
+updateMatrix(pieces);
+update(pieces);
 
 if(moveCount % 2 == 0){
   turn = 'b'
