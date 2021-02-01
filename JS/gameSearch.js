@@ -50,9 +50,9 @@ function gameSearch(pos,turn,tempMax){
             key:key,
             index:i
           };
-
         }
       });
+      
   }
 
 
@@ -74,6 +74,7 @@ function gameSearch(pos,turn,tempMax){
           temp.splice(i,1);
           position[selectedPiece.key][selectedPiece.index].pos.x = obj.x;
           position[selectedPiece.key][selectedPiece.index].pos.y = obj.y;
+          break;
 
 
 
