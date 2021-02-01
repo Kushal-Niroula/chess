@@ -4,7 +4,7 @@ let position = JSON.parse(JSON.stringify(pieces));
 let objIndex;
 
 
-let obj = gameSearch(position,'b')
+let obj = gameSearch(position,turn)
 if(obj == 0){
   gameOverEvaluation(pieces);
   return 0;
@@ -64,8 +64,8 @@ if(moveCount % 2 == 0){
 else{
   turn = 'w'
 }
-if(isCheck == 'w'){
-  console.log('reached');
+if(isCheck == turn){
+
   gameOverEvaluation(pieces,true);
 }
 

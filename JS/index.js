@@ -1,5 +1,8 @@
 canvas = document.getElementById('canvas');
+
 ctx = canvas.getContext('2d');
+button = document.getElementById('color-reverse');
+
 canvas.height = 640;
 canvas.width = 640;
 var moveCount = 1;
@@ -7,9 +10,11 @@ var player = -1;
 var selected = false;
 var selectSquare = [];
 var flag;
+var aiFlag = 0;
 var isCapture;
 var selectedPiece;
 var turn = 'w';
+var color = 'w';
 var castle = false;
 var isCheck = 0;
 var whiteMoves = [];
@@ -83,3 +88,4 @@ function handleClick(event){
   select(xR , yR);
 
 }
+button.addEventListener('click',changeColor);

@@ -119,22 +119,19 @@ function move(x,y,piece,pieces){
       pieces[piece.key][piece.index].pos.y = selectSquare[0].y;
       if(tempCap !=0){
         let isrc = existing + '1';
+        if(color == 'b'){
+          if(existing[0] == 'b'){
+            isrc = 'w' + existing[1] + '1'
+          }
+          else{
+            isrc = 'b'+existing[0]+'1';
+          }
+        }
         pieces[existing].push({img:eval(isrc),pos:{x:x,y:y}});
       }
 
 
       moveCount--;
-    }
-    if(isCheck != 'w' && (piece.key =='wK'|| piece.key == 'bK') && (x == selectSquare[0].x+2 || x == selectSquare[0].x -2) ){
-      castleFunction(x,y,piece);
-    }
-    if(isCheck != 'w' && (piece.key == 'wK' || piece.key == 'bK')){
-      pieces[piece.key][piece.index].move = 1
-
-    }
-    if(isCheck != 'w' && (piece.key == 'wR' || piece.key == 'bR')){
-      pieces[piece.key][piece.index].move = 1
-
     }
 
 
