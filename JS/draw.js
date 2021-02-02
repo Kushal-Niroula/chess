@@ -229,3 +229,11 @@ function drawCaptured(){
 
 
 }
+
+
+function drawArrow(){
+  ctx.beginPath();
+  ctx.moveTo(arrow[0] * 80 + 40 ,arrow[1] * 80 + 40);
+  ctx.lineTo(arrow[2] * 80 + 40 ,arrow[3] * 80 + 40);
+  ctx.stroke();
+}

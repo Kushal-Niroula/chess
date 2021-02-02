@@ -10,6 +10,7 @@ canvas.width = 640;
 
 captured.height = 640;
 captured.width = 300;
+var arrow=[];
 var moveCount = 1;
 var player = -1;
 var selected = false;

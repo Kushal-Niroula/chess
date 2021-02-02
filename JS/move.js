@@ -133,6 +133,11 @@ function move(x,y,piece,pieces){
 
       moveCount--;
     }
+    else{
+      arrow = [];
+      arrow =[selectSquare[0].x , selectSquare[0].y , x,y]
+    }
+
 
 
 
@@ -157,55 +162,3 @@ function move(x,y,piece,pieces){
 
 
   }
-
-
-
-
-
-
-
-  function moveValidator(key,x,y){
-    switch(key){
-      case('wP'):
-        return pawnMoveValid(selectSquare,key,x,y)
-        break;
-
-        case('bP'):
-        return pawnMoveValid(selectSquare,key,x,y);
-        break;
-
-      case('bK'):
-         return kingMoveValid(selectSquare,x,y);
-        break;
-      case ('wK'):
-          return kingMoveValid(selectSquare,x,y);
-          break;
-      case ('wR'):
-          return rookMoveValid(selectSquare,x,y);
-          break;
-      case('bR'):
-          return rookMoveValid(selectSquare,x,y);
-          break;
-      case ('bB'):
-          return bishopMoveValid(selectSquare,x,y);
-          break;
-      case ('wB'):
-          return bishopMoveValid(selectSquare,x,y);
-          break;
-      case ('bN'):
-            return knightMoveValid(selectSquare,x,y);
-            break;
-      case ('wN'):
-            return knightMoveValid(selectSquare,x,y);
-            break;
-      case ('wQ'):
-            return(rookMoveValid(selectSquare,x,y) ||bishopMoveValid(selectSquare,x,y));
-            break;
-      case ('bQ'):
-            return(rookMoveValid(selectSquare,x,y) ||bishopMoveValid(selectSquare,x,y));
-            break;
-
-      default:
-        return false;
-      }
-    }

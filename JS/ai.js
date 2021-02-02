@@ -55,8 +55,9 @@ for(let i = 0 ; i<pieces[objKey].length ;i++ ){
       pieces[objKey][objIndex].pos.y = obj.y;
 
     }
-    moveCount ++
-
+    moveCount ++;
+arrow = [];
+arrow = [objx,objy,obj.x,obj.y];
 selectSquare = [];
 selected = false;
 checkPromotion(pieces);;
