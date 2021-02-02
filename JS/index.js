@@ -1,11 +1,15 @@
 canvas = document.getElementById('canvas');
-
 ctx = canvas.getContext('2d');
+captured = document.getElementById('captured');
+ctx2 = captured.getContext('2d');
 button = document.getElementById('color-reverse');
 ai = document.getElementById('ai');
 
 canvas.height = 640;
 canvas.width = 640;
+
+captured.height = 640;
+captured.width = 300;
 var moveCount = 1;
 var player = -1;
 var selected = false;
