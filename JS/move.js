@@ -1,4 +1,5 @@
-
+/* selects pieces based on the click function and moves if allowed square is again clicked */
+/* parameters: x = number(x-coordinate of click) , y= number(y-coordinate of click) */
 function select(x,y){
   if(selected == false){
   for(const key in pieces){
@@ -57,7 +58,8 @@ function select(x,y){
   }}
 
 
-
+/* player side move function */
+/* parameters: x,y=number(selected square coordinate) ,piece=obect (selected piece) , pieces =obect (board position) */
 function move(x,y,piece,pieces){
 
   let tempCap =0;

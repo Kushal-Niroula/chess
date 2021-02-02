@@ -1,3 +1,4 @@
+/* generates all possible moves for both sides */
 function moveGenerator(){
   whiteMoves = [];
   blackMoves = [];
@@ -26,7 +27,8 @@ function moveGenerator(){
 }
 
 
-
+/* generates all possible  pawn move */
+/* parameters: key=string(key of piece) ,(x,y)=number(coordinate of existing square) */
 function generatePawnMove(key,x,y){
 
 let temp =[];
@@ -52,7 +54,8 @@ let temp =[];
 
 }
 
-
+/* generates all possible  bishop move */
+/* parameters: key=string(key of piece) ,(x,y)=number(coordinate of existing square) */
 function generateBishopMove(key,x,y){
   temp = [];
   for (let i = 0 ; i<=7 ; i++){
@@ -72,6 +75,9 @@ function generateBishopMove(key,x,y){
   return temp;
   }
 
+
+  /* generates all possible  rook move */
+  /* parameters: key=string(key of piece) ,(x,y)=number(coordinate of existing square) */
 function generateRookMove(key,x,y){
   let temp =[];
   for(let i = 0 ;i<=7 ; i++){
@@ -90,6 +96,9 @@ function generateRookMove(key,x,y){
   return temp;
 }
 
+
+/* generates all possible  knight move */
+/* parameters: key=string(key of piece) ,(x,y)=number(coordinate of existing square) */
 function generateKnightMove(key,x,y){
   let temp = [];
 for(let i = x-2 ;i<= x+2;i++){
@@ -110,6 +119,9 @@ for(let i = x-2 ;i<= x+2;i++){
 return temp;
 }
 
+
+/* generates all possible  queen move */
+/* parameters: key=string(key of piece) ,(x,y)=number(coordinate of existing square) */
 function generateQueenMove(key,x,y){
   let temp=[];
   for (let i = 0 ; i<=7 ; i++){
@@ -145,6 +157,9 @@ function generateQueenMove(key,x,y){
 }
 
 
+
+/* generates all possible  king move */
+/* parameters: key=string(key of piece) ,(x,y)=number(coordinate of existing square) */
 function generateKingMove(key,x,y){
   let temp=[]
   for (let i = -1 ; i<=1 ; i++){

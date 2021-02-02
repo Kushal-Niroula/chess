@@ -1,3 +1,4 @@
+/* draws position based on all the pieces on the board */
 function drawPos(){
     for(const key in pieces ){
       pieces[key].forEach((item, i) => {
@@ -5,7 +6,7 @@ function drawPos(){
 
 }}
 
-
+/* draws square selected by the player */
 function drawSelect(){
   if(selectSquare.length>0){
   ctx.strokeStyle = "green";
@@ -13,7 +14,7 @@ function drawSelect(){
 }}
 
 
-
+/* signals check if check is detected */
 function drawCheck(){
   ctx.strokeStyle = "red";
   if(isCheck == 'w'){
@@ -23,6 +24,8 @@ function drawCheck(){
     ctx.strokeRect(pieces['bK'][0].pos.x * 80 , pieces['bK'][0].pos.y * 80 ,80 ,80);
   }
 }
+
+/*draw navigation dots when a piece is selected */
 function drawDots(){
   ctx.fillStyle = "green";
   if(dots.length>=1){
@@ -36,6 +39,7 @@ function drawDots(){
 dots = [];
 }
 
+/* draw captured pieces at the side of the board */
 function drawCaptured(){
   ctx2.clearRect(0,0,captured.width , captured.height)
   updateMatrix(pieces);
@@ -231,6 +235,8 @@ function drawCaptured(){
 }
 
 
+
+/* draws last move */
 function drawArrow(){
   ctx.beginPath();
   ctx.moveTo(arrow[0] * 80 + 40 ,arrow[1] * 80 + 40);

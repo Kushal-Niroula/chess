@@ -1,61 +1,9 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const captured = document.getElementById('captured');
-const ctx2 = captured.getContext('2d');
-const button = document.getElementById('color-reverse');
-const ai = document.getElementById('ai');
-const result = document.getElementById('result');
-
+/* declaring height and width of both canvas */
 canvas.height = 640;
 canvas.width = 640;
-
 captured.height = 640;
 captured.width = 300;
 
-const playAsWhite = document.getElementById('play-as-white');
-const gameMenu = document.getElementsByClassName('game-menu')[0];
-var arrow=[];
-var moveCount = 1;
-var player = -1;
-var selected = false;
-var selectSquare = [];
-var flag;
-var mode = 0;
-var isCapture;
-var selectedPiece;
-var turn = 'w';
-var color = 'w';
-var castle = false;
-var startGame = false;
-var isCheck = 0;
-var whiteMoves = [];
-var blackMoves = [];
-var dots = [];
-var recursion = 0;
-var bPMatrix = [];
-var wPMatrix = [];
-var bBMatrix = [];
-var wBMatrix = [];
-var bRMatrix = [];
-var wRMatrix = [];
-var bNMatrix = [];
-var wNMatrix = [];
-var bQMatrix = [];
-var wQMatrix = [];
-var bKMatrix = [];
-var wKMatrix = [];
-const bP1 = document.getElementById('blackPawn');
-const bK1 = document.getElementById('blackKing');
-const bN1 = document.getElementById('blackKnight');
-const bB1 = document.getElementById('blackBishop');
-const bQ1 = document.getElementById('blackQueen');
-const bR1 = document.getElementById('blackRook');
-const wP1 = document.getElementById('whitePawn');
-const wK1 = document.getElementById('whiteKing');
-const wN1 = document.getElementById('whiteKnight');
-const wB1 = document.getElementById('whiteBishop');
-const wQ1 = document.getElementById('whiteQueen');
-const wR1 = document.getElementById('whiteRook');
 
 
 document.addEventListener('DOMContentLoaded' , function(){
@@ -63,9 +11,9 @@ document.addEventListener('DOMContentLoaded' , function(){
   setTimeout(moveGenerator,2000);
 },false);
 
-var value ={p:100 , b:350 ,n:325 , q:970 , r:470};
 
 
+/* declaring initial board setup , standard chess notation */
 var pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,pos:{x:2, y:1}} , {img:bP1,pos:{x:3, y:1}} ,
           {img:bP1,pos:{x:4, y:1}} , {img:bP1,pos:{x:5, y:1}} , {img:bP1,pos:{x:6, y:1}} , {img:bP1,pos:{x:7, y:1}}],
           bK : [{img:bK1, pos:{x:4 , y:0} , move:false}],
@@ -83,6 +31,7 @@ var pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,
           wR : [{img:wR1,pos:{x:0,y:7},move:false} ,{img:wR1,pos:{x:7 , y:7},move:false}] }
 
 var matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
+
 initializeEvaluationMatrix();
 
 updateMatrix();
@@ -100,6 +49,7 @@ function handleClick(event){
   select(xR , yR);
 }
 }
+
 button.addEventListener('click',changeColor);
 ai.addEventListener('click', aiVsAi);
 

@@ -1,4 +1,4 @@
-
+/* checks if the position is in check */
 function check(pieces){
   try{
 
@@ -75,18 +75,8 @@ finally{
 }
 
 
-function castleFunction(x,y,piece){
-
-    if(x == selectSquare[0].x + 2 ){
-      pieces[piece.key[0]+'R'][1].pos.x = pieces[piece.key[0]+'R'][1].pos.x - 2;
-    }
-    else{
-      pieces[piece.key[0]+'R'][0].pos.x = pieces[piece.key[0]+'R'][0].pos.x + 3;
-    }
-    castle = false;
-  }
-
-
+/* invoked when game is over */
+/* parameter : isCheck= string(which side is checkmated) */
   function gameOverFunction(isCheck){
     result.style.display = "block";
     gameMenu.style.display = "block";

@@ -1,3 +1,6 @@
+
+/* fucntion to switch sides , black and white */
+/* play as black option handler at main menu */
 function changeColor(){
   canvas.style.opacity = "100%";
   gameMenu.style.display = "none";
@@ -65,6 +68,7 @@ function changeColor(){
 }
 
 
+/* ai vs ai menu handler */
 function aiVsAi(){
   color = 'b';
   changeColor();

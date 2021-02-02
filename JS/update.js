@@ -1,4 +1,4 @@
-
+/* function to render the board and position in canvas*/
 function update(){
   ctx.clearRect(0,0,640,640);
 for (var i = 0 ; i<=8; i++)
@@ -30,6 +30,7 @@ drawSelect();
 
 }
 
+/* function to update the matrix based on board position */
 function updateMatrix(pieces){
   matrix = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]];
 

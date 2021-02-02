@@ -1,5 +1,5 @@
 
-
+/* check if pawn moves to 8th or 1st rank */
 function checkPromotion(pieces){
   updateMatrix(pieces);
     for(let i = 0 ;i<pieces['wP'].length;i++){
@@ -29,6 +29,8 @@ function checkPromotion(pieces){
     }}
 
 
+    /* checks if king move is valid called by moveGenerator function */
+    /* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
     function kingMoveValid(selectSquare,x,y){
       if( x == selectSquare[0].x +1 || x == selectSquare[0].x-1 ){
         if(y== selectSquare[0].y || y == selectSquare[0].y +1 || y == selectSquare[0].y -1){
@@ -45,7 +47,8 @@ function checkPromotion(pieces){
       return false;
     }
 
-
+    /* checks if rook move is valid called by moveGenerator function */
+    /* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
 function rookMoveValid(selectSquare,x,y){
   if(x == selectSquare[0].x && y != selectSquare[0].y){
     if(y > selectSquare[0].y){
@@ -89,7 +92,8 @@ function rookMoveValid(selectSquare,x,y){
   }
 }
 
-
+/* checks if bishop move is valid called by moveGenerator function */
+/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
 function bishopMoveValid(selectSquare,x,y){
   if(x == selectSquare[0].x || y == selectSquare[0].y){
     return false;
@@ -113,6 +117,9 @@ function bishopMoveValid(selectSquare,x,y){
   return true;
 }
 
+
+/* checks if knight move is valid called by moveGenerator function */
+/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
 function knightMoveValid(selectSquare,x,y){
   if((x == selectSquare[0].x + 2) || x == selectSquare[0].x - 2){
     if((y == selectSquare[0].y + 1) || y == selectSquare[0].y -1){
@@ -128,6 +135,8 @@ function knightMoveValid(selectSquare,x,y){
 }
 
 
+/* checks if pawn move is valid called by moveGenerator function */
+/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
 function pawnMoveValid(selectSquare,key,x,y){
   if(x >=0 && x<=7 && y>=0 && y<=7){
   if(x== selectSquare[0].x){
