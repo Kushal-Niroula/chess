@@ -14,6 +14,9 @@ if(obj == 0){
   gameOverEvaluation(pieces);
   return 0;
 }
+if(turn == 'w' & mode == 0 ){
+  return;
+}
 updateMatrix(pieces);
 moveGenerator(pieces);
 check(pieces);
