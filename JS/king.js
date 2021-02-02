@@ -85,3 +85,28 @@ function castleFunction(x,y,piece){
     }
     castle = false;
   }
+
+
+  function gameOverFunction(isCheck){
+    result.style.display = "block";
+    gameMenu.style.display = "block";
+    canvas.style.opacity = "50%";
+
+    if(isCheck == 'w'){
+        if(color == 'w'){
+
+          result.innerHTML = "Black won"
+          }
+          if(color == 'b'){
+            result.innerHTML = "White won";
+          }
+  }
+  else{
+    if(color == 'w'){
+      result.innerHTML = "White won";
+    }
+    else{
+      result.innerHTML = "black Won";
+    }
+  }
+}

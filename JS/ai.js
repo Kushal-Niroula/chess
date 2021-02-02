@@ -104,13 +104,13 @@ let obj = {}
 
     if(isCheck == 'b'){
   if(iterator >=blackMoves.length-1){
-    window.alert('I lost');
+    gameOverFunction(isCheck);
     return(0);
   }
 }
 if(isCheck == 'w'){
 if(iterator >=whiteMoves.length-1){
-window.alert('I won');
+gameOverFunction(isCheck);
 return(0);
 }
 }
@@ -170,7 +170,7 @@ if(matrix[obj.x][obj.y] != 0){
           moveCount = moveCount -1;
 
           if(isCheck !=turn && test == true){
-            console.log(selectedPiece.key,objx,objy);
+
             return ;
           }
 
@@ -196,7 +196,7 @@ else{
     pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;
     moveCount = moveCount -1;
     if(test == true && isCheck != turn){
-      console.log(selectedPiece.key,selectedPiece.index,objx,objy);
+
       return 0;
     }
     loop = true;

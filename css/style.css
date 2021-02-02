@@ -1,31 +1,51 @@
 .hide{
   display: none;
 }
-.main{
-  float:left;
-}
-#canvas{
-float:left;
-}
-#color-reverse{
-  float:left;
-  display: block;
-  margin-top: 290px;
-  padding:15px;
-  background-color: #f5f5f5;
-  cursor:pointer;
-  border:1px solid black;
-  margin-left: 10px;
-}
-#ai{
-  margin-top: 290px;
-  float:left;
-  padding:15px;
-  background-color: #f5f5f5;
-  cursor:pointer;
-  border:1px solid black;
-  margin-left: 10px;
-}
-#captured {
 
+.wrapper {
+  position:relative;
+}
+.game-menu {
+  position:absolute;
+  margin-top:200px;
+  left:550px;
+}
+
+.main{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+}
+
+#canvas{
+  margin-left:300px;
+  opacity:40%;
+}
+
+
+#color-reverse , #ai , #play-as-white{
+  margin:5px;
+  display:block;
+  padding:15px;
+  background-color: #95BB4A;
+  cursor:pointer;
+  margin-left: 10px;
+  border-radius:5px;
+  font-weight: bold;
+  color:white;
+}
+
+#color-reverse:hover , #ai:hover , #play-as-white:hover{
+  background-color: red;
+}
+#result {
+  margin:5px;
+  display:none;
+  padding:15px;
+  background-color: red;
+  margin-left: 10px;
+  border-radius:5px;
+  font-weight: bold;
+  color:white;
 }

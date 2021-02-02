@@ -1,16 +1,28 @@
 
 
 function checkPromotion(pieces){
+  updateMatrix(pieces);
     for(let i = 0 ;i<pieces['wP'].length;i++){
-      if(pieces['wP'][i].pos.y == 0){
+      if(pieces['wP'][i].pos.y == 0 && color == 'w'){
           pieces['wQ'].push({img:wQ1 , pos:{x:pieces['wP'][i].pos.x , y:0}})
         pieces['wP'].splice(i,1);
 
       }
+      else if(pieces['wP'][i].pos.y == 0 && color == 'b'){
+          pieces['wQ'].push({img:bQ1 , pos:{x:pieces['wP'][i].pos.x , y:0}})
+        pieces['wP'].splice(i,1);
+
+      }
+
     }
     for(let i = 0;i<pieces['bP'].length ; i++){
-      if(pieces['bP'][i].pos.y == 7){
+      if(pieces['bP'][i].pos.y == 7 && color == 'w'){
         pieces['bQ'].push({img:bQ1 , pos:{x:pieces['bP'][i].pos.x , y:7}});
+        pieces['bP'].splice(i,1);
+
+      }
+      else if(pieces['bP'][i].pos.y == 7 && color == 'b'){
+        pieces['bQ'].push({img:wQ1 , pos:{x:pieces['bP'][i].pos.x , y:7}});
         pieces['bP'].splice(i,1);
 
       }

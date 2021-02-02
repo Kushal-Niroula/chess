@@ -1,15 +1,19 @@
-canvas = document.getElementById('canvas');
-ctx = canvas.getContext('2d');
-captured = document.getElementById('captured');
-ctx2 = captured.getContext('2d');
-button = document.getElementById('color-reverse');
-ai = document.getElementById('ai');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const captured = document.getElementById('captured');
+const ctx2 = captured.getContext('2d');
+const button = document.getElementById('color-reverse');
+const ai = document.getElementById('ai');
+const result = document.getElementById('result');
 
 canvas.height = 640;
 canvas.width = 640;
 
 captured.height = 640;
 captured.width = 300;
+
+const playAsWhite = document.getElementById('play-as-white');
+const gameMenu = document.getElementsByClassName('game-menu')[0];
 var arrow=[];
 var moveCount = 1;
 var player = -1;
@@ -22,6 +26,7 @@ var selectedPiece;
 var turn = 'w';
 var color = 'w';
 var castle = false;
+var startGame = false;
 var isCheck = 0;
 var whiteMoves = [];
 var blackMoves = [];
@@ -89,10 +94,19 @@ canvas.addEventListener('click',handleClick);
 function handleClick(event){
   var x = event.clientX;
   var y = event.clientY;
-  let xR = Math.floor(x / 80);
-  let yR = Math.floor(y / 80);
+  let xR = Math.floor((x-300)/ 80 );
+  let yR = Math.floor(y/ 80);
+  if(startGame){
   select(xR , yR);
-
+}
 }
 button.addEventListener('click',changeColor);
 ai.addEventListener('click', aiVsAi);
+
+playAsWhite.addEventListener('click',function(){
+  canvas.style.opacity = "100%";
+  gameMenu.style.display = "none";
+  startGame = true;
+  color = 'b';
+  changeColor();
+})

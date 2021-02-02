@@ -1,4 +1,7 @@
 function changeColor(){
+  canvas.style.opacity = "100%";
+  gameMenu.style.display = "none";
+  startGame = true;
   if(mode == 'ai'){
     color = 'b';
     mode = 0;
