@@ -2,6 +2,7 @@ canvas = document.getElementById('canvas');
 
 ctx = canvas.getContext('2d');
 button = document.getElementById('color-reverse');
+ai = document.getElementById('ai');
 
 canvas.height = 640;
 canvas.width = 640;
@@ -10,7 +11,7 @@ var player = -1;
 var selected = false;
 var selectSquare = [];
 var flag;
-var aiFlag = 0;
+var mode = 0;
 var isCapture;
 var selectedPiece;
 var turn = 'w';
@@ -89,3 +90,4 @@ function handleClick(event){
 
 }
 button.addEventListener('click',changeColor);
+ai.addEventListener('click', aiVsAi);

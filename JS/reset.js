@@ -1,6 +1,10 @@
 function changeColor(){
-
+  if(mode == 'ai'){
+    color = 'b';
+    mode = 0;
+  }
   if (color == 'w'){
+
       button.innerHTML = "Play as White";
     pieces = {bP:[{img:wP1,pos:{x:0, y:1}}, {img:wP1,pos:{x:1, y:1}} , {img:wP1,pos:{x:2, y:1}} , {img:wP1,pos:{x:3, y:1}} ,
               {img:wP1,pos:{x:4, y:1}} , {img:wP1,pos:{x:5, y:1}} , {img:wP1,pos:{x:6, y:1}} , {img:wP1,pos:{x:7, y:1}}],
@@ -23,6 +27,7 @@ function changeColor(){
   }
 
   else{
+
     button.innerHTML = "play as black";
     pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,pos:{x:2, y:1}} , {img:bP1,pos:{x:3, y:1}} ,
               {img:bP1,pos:{x:4, y:1}} , {img:bP1,pos:{x:5, y:1}} , {img:bP1,pos:{x:6, y:1}} , {img:bP1,pos:{x:7, y:1}}],
@@ -43,14 +48,26 @@ function changeColor(){
     color = 'w';
   }
 
-
-
   updateMatrix(pieces);
   moveGenerator(pieces);
   update();
 
-  if(turn == 'b'){
+  if(turn == 'w' && color == 'w'){
+    moveCount = 1;
+  }
+  if(turn == 'b' && color == 'b'){
     moveCount = 0;
     setTimeout(aiMoves,0);
   }
+}
+
+
+function aiVsAi(){
+  color = 'b';
+  changeColor();
+  mode = 'ai';
+  moveCount = 1;
+  button.innerHTML ='play vs computer';
+  update();
+  setTimeout(aiMoves,0);
 }

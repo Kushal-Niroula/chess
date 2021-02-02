@@ -1,5 +1,10 @@
 function aiMoves(){
-
+if(moveCount % 2 == 0){
+  turn = 'b'
+}
+else{
+  turn  = 'w';
+}
 let position = JSON.parse(JSON.stringify(pieces));
 let objIndex;
 
@@ -69,8 +74,8 @@ if(isCheck == turn){
   gameOverEvaluation(pieces,true);
 }
 
-if(turn == 'b'){
-  aiMoves();
+if(turn == 'b' || mode == 'ai'){
+  setTimeout(aiMoves,0);
 }
 }
 
