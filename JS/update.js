@@ -26,6 +26,7 @@ drawPos();
 drawCaptured();
 drawCheck();
 drawSelect();
+drawThink();
 
 
 }

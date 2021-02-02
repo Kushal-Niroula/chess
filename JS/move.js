@@ -137,7 +137,8 @@ function move(x,y,piece,pieces){
     }
     else{
       arrow = [];
-      arrow =[selectSquare[0].x , selectSquare[0].y , x,y]
+      arrow =[selectSquare[0].x , selectSquare[0].y , x,y];
+    
     }
 
 

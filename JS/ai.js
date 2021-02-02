@@ -66,14 +66,16 @@ function aiMoves(){
         moveGenerator(pieces);
         check(pieces);
 
-        update(pieces);
+
 
         if(moveCount % 2 == 0){
           turn = 'b'
         }
         else{
-          turn = 'w'
+          turn = 'w';
+
         }
+        update(pieces);
         if(isCheck == turn){
 
           gameOverEvaluation(pieces,true);

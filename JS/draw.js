@@ -243,3 +243,12 @@ function drawArrow(){
   ctx.lineTo(arrow[2] * 80 + 40 ,arrow[3] * 80 + 40);
   ctx.stroke();
 }
+
+function drawThink(){
+  if(turn == 'w'){
+    ctx2.fillText('Player thinking...' , 30,450)
+  }
+  if(turn =='b'){
+    ctx2.fillText('AI thinking ...',30,130);
+  }
+}
