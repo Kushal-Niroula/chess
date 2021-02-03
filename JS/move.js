@@ -39,9 +39,11 @@ function select(x,y){
         return;
 
       }
-    });}
+    });
+  }
 
-}}
+}
+}
 
   else{
 
@@ -55,7 +57,10 @@ function select(x,y){
             setTimeout(aiMoves,0);
           }
 
-  }}
+  }
+}
+
+
 
 
 /* player side move function */

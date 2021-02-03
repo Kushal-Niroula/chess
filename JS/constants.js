@@ -8,6 +8,8 @@ const ai = document.getElementById('ai');
 const result = document.getElementById('result');
 const playAsWhite = document.getElementById('play-as-white');
 const gameMenu = document.getElementsByClassName('game-menu')[0];
+
+/* chess piece images */
 const bP1 = document.getElementById('blackPawn');
 const bK1 = document.getElementById('blackKing');
 const bN1 = document.getElementById('blackKnight');
