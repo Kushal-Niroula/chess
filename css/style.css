@@ -39,6 +39,7 @@
 #color-reverse:hover , #ai:hover , #play-as-white:hover{
   background-color: red;
 }
+
 #result {
   margin:5px;
   display:none;
@@ -48,4 +49,8 @@
   border-radius:5px;
   font-weight: bold;
   color:white;
+}
+
+.icon {
+  display:inline;
 }

@@ -60,6 +60,7 @@ function select(x,y){
 
 /* player side move function */
 /* parameters: x,y=number(selected square coordinate) ,piece=obect (selected piece) , pieces =obect (board position) */
+
 function move(x,y,piece,pieces){
 
   let tempCap =0;
@@ -138,7 +139,7 @@ function move(x,y,piece,pieces){
     else{
       arrow = [];
       arrow =[selectSquare[0].x , selectSquare[0].y , x,y];
-    
+
     }
 
 
