@@ -11,7 +11,7 @@ function changeColor(){
   }
   if (color == 'w'){
 
-      button.innerHTML = "Play as White";
+
     pieces = {bP:[{img:wP1,pos:{x:0, y:1}}, {img:wP1,pos:{x:1, y:1}} , {img:wP1,pos:{x:2, y:1}} , {img:wP1,pos:{x:3, y:1}} ,
               {img:wP1,pos:{x:4, y:1}} , {img:wP1,pos:{x:5, y:1}} , {img:wP1,pos:{x:6, y:1}} , {img:wP1,pos:{x:7, y:1}}],
               bK : [{img:wK1, pos:{x:3 , y:0} , move:false}],
@@ -34,7 +34,7 @@ function changeColor(){
 
   else{
 
-    button.innerHTML = "play as black";
+  
     pieces = {bP:[{img:bP1,pos:{x:0, y:1}}, {img:bP1,pos:{x:1, y:1}} , {img:bP1,pos:{x:2, y:1}} , {img:bP1,pos:{x:3, y:1}} ,
               {img:bP1,pos:{x:4, y:1}} , {img:bP1,pos:{x:5, y:1}} , {img:bP1,pos:{x:6, y:1}} , {img:bP1,pos:{x:7, y:1}}],
               bK : [{img:bK1, pos:{x:4 , y:0} , move:false}],

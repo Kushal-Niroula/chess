@@ -245,10 +245,10 @@ function drawArrow(){
 }
 
 function drawThink(){
-  if(turn == 'w'){
+  if(turn == 'w' && startGame){
     ctx2.fillText('Player thinking...' , 30,450)
   }
-  if(turn =='b'){
+  if(turn =='b' && startGame){
     ctx2.fillText('AI thinking ...',30,130);
   }
 }
