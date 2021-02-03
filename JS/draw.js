@@ -42,6 +42,7 @@ dots = [];
 /* draw captured pieces at the side of the board */
 function drawCaptured(){
   ctx2.clearRect(0,0,captured.width , captured.height)
+  ctx2.drawImage(home,120,300);
   updateMatrix(pieces);
   let bCounter = 0;
   let wCounter = 0;

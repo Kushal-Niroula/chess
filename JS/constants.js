@@ -20,4 +20,6 @@ const wN1 = document.getElementById('whiteKnight');
 const wB1 = document.getElementById('whiteBishop');
 const wQ1 = document.getElementById('whiteQueen');
 const wR1 = document.getElementById('whiteRook');
+const home =  document.getElementById('home');
 const value ={p:100 , b:350 ,n:325 , q:970 , r:470};
+const contd = document.getElementById("continue");

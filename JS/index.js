@@ -41,9 +41,9 @@ canvas.addEventListener('click',handleClick);
 
 
 function handleClick(event){
-  var x = event.clientX;
+  var x = event.offsetX;
   var y = event.clientY;
-  let xR = Math.floor((x-300)/ 80 );
+  let xR = Math.floor(x/ 80 );
   let yR = Math.floor(y/ 80);
   if(startGame){
   select(xR , yR);
@@ -52,6 +52,8 @@ function handleClick(event){
 
 button.addEventListener('click',changeColor);
 ai.addEventListener('click', aiVsAi);
+captured.addEventListener('click',handlePause);
+contd.addEventListener('click',handleContinue);
 
 playAsWhite.addEventListener('click',function(){
   canvas.style.opacity = "100%";
