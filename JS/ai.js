@@ -165,7 +165,20 @@ function gameOverEvaluation(pieces,test){
                 check(pieces);
 
                 if(isCheck == turn || (isCheck != turn  && test == true)){
+                  if(color == 'w'){
                   pieces[ik].push({img:eval(ik + 1),pos:{x:obj.x,y:obj.y}});
+                }
+                  if(color == 'b'){
+                    if(ik[0]== 'w'){
+                      let isrc = 'b'+ik[1]+'1';
+                        pieces[ik].push({img:eval(isrc),pos:{x:obj.x,y:obj.y}});
+                    }
+                    if(ik[0]== 'b'){
+                      let isrc = 'w'+ik[1]+'1';
+                        pieces[ik].push({img:eval(isrc),pos:{x:obj.x,y:obj.y}});
+                    }
+
+                  }
                   pieces[selectedPiece.key][selectedPiece.index].pos.x = objx;
                   pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;
                   moveCount = moveCount -1;

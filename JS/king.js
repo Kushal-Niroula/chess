@@ -78,9 +78,12 @@ finally{
 /* invoked when game is over */
 /* parameter : isCheck= string(which side is checkmated) */
   function gameOverFunction(isCheck){
+    contd.style.display="none"
     result.style.display = "block";
     gameMenu.style.display = "block";
     canvas.style.opacity = "50%";
+    startGame = false;
+    arrow=[];
 
     if(isCheck == 'w'){
         if(color == 'w'){

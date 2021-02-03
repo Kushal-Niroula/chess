@@ -50,7 +50,7 @@ function handleClick(event){
 }
 }
 
-button.addEventListener('click',changeColor);
+button.addEventListener('click',playAsBlack);
 ai.addEventListener('click', aiVsAi);
 captured.addEventListener('click',handlePause);
 contd.addEventListener('click',handleContinue);

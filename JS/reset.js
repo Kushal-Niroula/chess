@@ -68,13 +68,16 @@ function changeColor(){
 }
 
 
+function playAsBlack(){
+  color='w';
+  changeColor();
+}
 /* ai vs ai menu handler */
 function aiVsAi(){
   color = 'b';
   changeColor();
   mode = 'ai';
   moveCount = 1;
-  button.innerHTML ='play vs computer';
   update();
   setTimeout(aiMoves,0);
 }
@@ -89,10 +92,12 @@ function handlePause(event){
     gameMenu.style.display = "block";
     contd.style.display = "block";
     canvas.style.opacity = "40%";
+    startGame = false;
   }
 }
 
 function handleContinue(){
+  startGame = true;
   gameMenu.style.display = "none";
   contd.style.display="none";
   canvas.style.opacity="100%";j
