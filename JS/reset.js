@@ -148,7 +148,7 @@ function aiVsAi() {
 function handlePause(event) {
   let x = event.offsetX;
   let y = event.clientY;
-  if (x > 120 && x < 150 && y > 300 && y < 330) {
+  if (x > 120 && x < 180 && y > 300 && y < 360) {
     result.style.display = "none";
     gameMenu.style.display = "block";
     contd.style.display = "block";
@@ -156,6 +156,15 @@ function handlePause(event) {
     startGame = false;
   }
 }
+
+captured.addEventListener('mouseover',function(event){
+  let x = event.offsetX;
+  let y = event.clientY;
+  if (x > 120 && x < 180 && y > 300 && y < 360) {
+    captured.style.cursor = "pointer";
+
+  }
+})
 
 function handleContinue() {
   startGame = true;

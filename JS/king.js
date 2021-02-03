@@ -78,6 +78,9 @@ function gameOverFunction(isCheck) {
   }
 }
 
+
+/* castle fucntion implementation*/
+/* parameters : key= string(wK or bK) , x,y=number(coordinate), selectSquare = object */
 function castle(key, x, y, selectSquare) {
   if (isCheck == 0) {
     if (selectSquare[0].y == 7 || selectSquare[0].y == 0) {
@@ -87,12 +90,12 @@ function castle(key, x, y, selectSquare) {
             pieces[key[0] + "R"][0].move == false &&
             pieces[key][0].move == false
           ) {
-            if (matrix[1][7] && matrix[2][7] == 0 && key[0] == "w") {
+            if (matrix[1][7]==0 && matrix[2][7] == 0 && key[0] == "w") {
               pieces[key][0].pos.x = 1;
               pieces[key[0] + "R"][0].pos.x = 2;
               return true;
             }
-            if (matrix[1][0] && matrix[2][0] == 0 && key[0] == "b") {
+            if (matrix[1][0]==0 && matrix[2][0] == 0 && key[0] == "b") {
               pieces[key][0].pos.x = 1;
               pieces[key[0] + "R"][0].pos.x = 2;
               return true;

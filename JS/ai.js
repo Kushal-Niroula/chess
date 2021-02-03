@@ -6,7 +6,7 @@ function aiMoves() {
   } else {
     turn = "w";
   }
-  let position = JSON.parse(JSON.stringify(pieces));
+  let position = objectClone(pieces);
   let objIndex;
 
   let obj = gameSearch(
