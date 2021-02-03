@@ -20,7 +20,7 @@ function gameSearch(pos, turn, tempMax) {
   }
 
   for (let i = 0; i < counter; i++) {
-    position = JSON.parse(JSON.stringify(pos));
+    position = objectClone(pos);
     updateMatrix(position);
     moveGenerator(position);
     check(position);
@@ -89,7 +89,7 @@ function gameSearch(pos, turn, tempMax) {
       let pass = turn == "b" ? "w" : "b";
       recursion = 1;
       let temp = gameSearch(
-        JSON.parse(JSON.stringify(position)),
+        objectClone(position),
         pass,
         maxValue
       ); /* searching at depth 2 */
@@ -112,7 +112,7 @@ function gameSearch(pos, turn, tempMax) {
       let pass = turn == "b" ? "w" : "b";
       recursion = 2;
       let temp = gameSearch(
-        JSON.parse(JSON.stringify(position)),
+        objectClone(position),
         pass,
         maxValue
       ); /* searching at depth 3 */
@@ -133,7 +133,7 @@ function gameSearch(pos, turn, tempMax) {
       let pass = turn == "b" ? "w" : "b";
       recursion = 3;
       let temp = gameSearch(
-        JSON.parse(JSON.stringify(position)),
+        objectClone(position),
         pass,
         maxValue
       ); /* searching at depth 4 */
