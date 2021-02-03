@@ -77,3 +77,101 @@ function gameOverFunction(isCheck) {
     }
   }
 }
+
+function castle(key, x, y, selectSquare) {
+  if (isCheck == 0) {
+    if (selectSquare[0].y == 7 || selectSquare[0].y == 0) {
+      if (selectSquare[0].x == 3) {
+        if (x == 1) {
+          if (
+            pieces[key[0] + "R"][0].move == false &&
+            pieces[key][0].move == false
+          ) {
+            if (matrix[1][7] && matrix[2][7] == 0 && key[0] == "w") {
+              pieces[key][0].pos.x = 1;
+              pieces[key[0] + "R"][0].pos.x = 2;
+              return true;
+            }
+            if (matrix[1][0] && matrix[2][0] == 0 && key[0] == "b") {
+              pieces[key][0].pos.x = 1;
+              pieces[key[0] + "R"][0].pos.x = 2;
+              return true;
+            }
+          }
+        }
+        if (x == 5) {
+          if (pieces[key][1].move == false) {
+            if (
+              matrix[4][7] == 0 &&
+              matrix[5][7] == 0 &&
+              matrix[6][7] == 0 &&
+              key[0] == "w"
+            ) {
+              pieces[key][0].pos.x = 5;
+              pieces[key[0] + "R"][1].pos.x = 4;
+              return true;
+            }
+
+            if (
+              matrix[4][0] == 0 &&
+              matrix[5][0] == 0 &&
+              matrix[6][0] == 0 &&
+              key[0] == "b"
+            ) {
+              pieces[key][0].pos.x = 5;
+              pieces[key[0] + "R"][1].pos.x = 4;
+              return true;
+            }
+          }
+        }
+      }
+      if (selectSquare[0].x == 4) {
+        if (x == 2) {
+          if (
+            pieces[key[0] + "R"][0].move == false &&
+            pieces[key][0].move == false
+          ) {
+            if (
+              matrix[1][7] == 0 &&
+              matrix[2][7] == 0 &&
+              matrix[3][7] == 0 &&
+              key[0] == "w"
+            ) {
+              pieces[key][0].pos.x = 2;
+              pieces[key[0] + "R"][0].pos.x = 3;
+              return true;
+            }
+            if (
+              matrix[1][0] == 0 &&
+              matrix[2][0] == 0 &&
+              matrix[3][0] == 0 &&
+              key[0] == "b"
+            ) {
+              pieces[key][0].pos.x = 2;
+              pieces[key[0] + "R"][0].pos.x = 3;
+              return true;
+            }
+          }
+        }
+        if (x == 6) {
+          if (
+            pieces[key[0] + "R"][1].move == false &&
+            pieces[key][0].move == false
+          ) {
+            if (matrix[5][7] == 0 && matrix[6][7] == 0 && key[0] == "w") {
+              pieces[key][0].pos.x = 6;
+              pieces[key[0] + "R"][1].pos.x = 5;
+              return true;
+            }
+            if (matrix[5][0] == 0 && matrix[6][0] == 0 && key[0] == "b") {
+              pieces[key][0].pos.x = 6;
+              pieces[key[0] + "R"][1].pos.x = 5;
+              return true;
+            }
+          }
+        }
+      }
+    }
+  }
+  return false;
+}

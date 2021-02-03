@@ -1,11 +1,10 @@
-
 /* fucntion to switch sides , black and white */
 /* play as black option handler at main menu */
 function changeColor() {
   canvas.style.opacity = "100%";
   gameMenu.style.display = "none";
   startGame = true;
-  if (mode == "ai") {
+  if (mode == "ai" || mode == "p") {
     color = "b";
     mode = 0;
   }
@@ -163,5 +162,13 @@ function handleContinue() {
   gameMenu.style.display = "none";
   contd.style.display = "none";
   canvas.style.opacity = "100%";
-  j;
+}
+
+function handleP2P() {
+  startGame = true;
+  gameMenu.style.display = "none";
+  canvas.style.opacity = "100%";
+  color = "b";
+  changeColor();
+  mode = "p";
 }

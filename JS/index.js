@@ -97,6 +97,7 @@ button.addEventListener("click", playAsBlack);
 ai.addEventListener("click", aiVsAi);
 captured.addEventListener("click", handlePause);
 contd.addEventListener("click", handleContinue);
+p2p.addEventListener("click",handleP2P);
 
 playAsWhite.addEventListener("click", function () {
   canvas.style.opacity = "100%";

@@ -7,7 +7,7 @@
 }
 .game-menu {
   position: absolute;
-  margin-top: 200px;
+  margin-top: 160px;
   left: 43%;
 }
 
@@ -29,7 +29,7 @@
 
 #color-reverse,
 #ai,
-#play-as-white {
+#play-as-white , #p-Vs-p{
   margin: 5px;
   display: block;
   padding: 15px;
@@ -44,7 +44,7 @@
 #color-reverse:hover,
 #ai:hover,
 #play-as-white:hover,
-#continue:hover {
+#continue:hover ,#p-Vs-p:hover{
   background-color: red;
 }
 

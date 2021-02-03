@@ -8,6 +8,8 @@ const ai = document.getElementById('ai');
 const result = document.getElementById('result');
 const playAsWhite = document.getElementById('play-as-white');
 const gameMenu = document.getElementsByClassName('game-menu')[0];
+const contd = document.getElementById("continue");
+const p2p =  document.getElementById("p-Vs-p");
 
 /* chess piece images */
 const bP1 = document.getElementById('blackPawn');
@@ -24,4 +26,3 @@ const wQ1 = document.getElementById('whiteQueen');
 const wR1 = document.getElementById('whiteRook');
 const home =  document.getElementById('home');
 const value ={p:100 , b:350 ,n:325 , q:970 , r:470};
-const contd = document.getElementById("continue");
