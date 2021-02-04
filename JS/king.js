@@ -70,7 +70,7 @@ function gameOverFunction(isCheck) {
     if (color == "b") {
       result.innerHTML = "White won";
     }
-  } else {
+  } else if(isCheck =='b') {
     if (color == "w") {
       result.innerHTML = "White won";
     } else {

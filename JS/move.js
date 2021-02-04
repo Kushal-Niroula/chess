@@ -157,7 +157,9 @@ function move(x, y, piece, pieces) {
       turn = "w";
     }
     if (isCheck && mode == "p") {
-      gameOverEvaluation(pieces, true);
+      if(gameOverEvaluation(objectClone(pieces), true)){
+        gameOverFunction(isCheck);
+      }
     }
   }
   if(isCheck){

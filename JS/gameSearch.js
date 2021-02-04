@@ -176,9 +176,10 @@ function gameSearch(pos, turn, tempMax) {
     return maxValue;
   }
 
-  if (maxValue != -10000 && maxValue != 10000) {
+  if ((maxValue != -10000 && turn =='b') ||(maxValue !=10000 && turn == 'w')) {
     return max;
   }
+
   return 0;
 }
 
