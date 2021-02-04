@@ -13,8 +13,8 @@ function aiMoves() {
     turn
   ); /* position evaluation and picking best move */
   if (obj == 0) {
-  console.log(isCheck);
-  gameOverFunction(isCheck)
+  gameOverFunction(isCheck);
+  return 0;
   }
   if ((turn == "w") & (mode == 0)) {
     return;
@@ -86,6 +86,7 @@ if(isCheck == turn){
 *
 * @param {pieces} object
 * @param {test} boolean
+* @return boolean(if checkmate or not)
 *evaluates the position and detects if it is checkmate on either side
 */
 function gameOverEvaluation(pos, test) {
