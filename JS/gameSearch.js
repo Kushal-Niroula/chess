@@ -1,12 +1,13 @@
-/* gamesearch to find the best move */
-/* parameters:  pos =object (clone of board position) , turn =string(player turn), tempmax= number (goodness at depth for alpha beta pruning) */
+/**
+gamesearch to find the best move
+/* @param {pos} object
+* @param {turn} string
+* @param {tempMax} number
+*/
 function gameSearch(pos, turn, tempMax) {
   let obj = {};
-  let randomObj = {};
   let validated = 1;
   let max = {};
-  let pieceKey;
-  let indexPiece;
   let maxValue;
   let counter;
   if (turn == "b") {

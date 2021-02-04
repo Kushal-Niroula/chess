@@ -1,5 +1,7 @@
-/* fucntion to switch sides , black and white */
-/* play as black option handler at main menu */
+/**
+*@description
+* changes the current color of the pieces
+*/
 function changeColor() {
   canvas.style.opacity = "100%";
   gameMenu.style.display = "none";
@@ -130,11 +132,21 @@ function changeColor() {
   }
 }
 
+
+/**
+*@description
+* play as black option handler at menu
+*/
 function playAsBlack() {
   color = "w";
   changeColor();
 }
-/* ai vs ai menu handler */
+
+
+/**
+*@description
+* play ai vs ai option handler at menu
+*/
 function aiVsAi() {
   color = "b";
   changeColor();
@@ -143,6 +155,11 @@ function aiVsAi() {
   update();
   setTimeout(aiMoves, 0);
 }
+
+/**
+*@description
+*pause event handler
+*/
 
 function handlePause(event) {
   let x = event.offsetX;
@@ -156,6 +173,10 @@ function handlePause(event) {
   }
 }
 
+/**
+* @description
+*pause play button handler
+*/
 captured.addEventListener('mouseover',function(event){
   let x = event.offsetX;
   let y = event.clientY;
@@ -165,6 +186,11 @@ captured.addEventListener('mouseover',function(event){
   }
 })
 
+/**
+@description
+*continue button handler
+*/
+
 function handleContinue() {
   startGame = true;
   gameMenu.style.display = "none";
@@ -172,6 +198,11 @@ function handleContinue() {
   canvas.style.opacity = "100%";
 }
 
+
+/**
+*@description
+*player vs player button handler
+*/
 function handleP2P() {
   startGame = true;
   gameMenu.style.display = "none";

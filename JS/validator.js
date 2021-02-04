@@ -1,4 +1,7 @@
-/* check if pawn moves to 8th or 1st rank */
+/**
+*@description
+*checks if pawn moves to 8th or first rank
+*/
 function checkPromotion(pieces) {
   updateMatrix(pieces);
   for (let i = 0; i < pieces["wP"].length; i++) {
@@ -21,8 +24,13 @@ function checkPromotion(pieces) {
   }
 }
 
-/* checks if king move is valid called by moveGenerator function */
-/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
+/**
+*@description
+*validates king moves
+*@param {selectSquare} array
+*@param {x} number
+*@param {y} number
+*/
 function kingMoveValid(selectSquare, x, y) {
   if (x == selectSquare[0].x + 1 || x == selectSquare[0].x - 1) {
     if (
@@ -42,8 +50,13 @@ function kingMoveValid(selectSquare, x, y) {
   return false;
 }
 
-/* checks if rook move is valid called by moveGenerator function */
-/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
+/**
+*@description
+*validates rook moves
+*@param {selectSquare} array
+*@param {x} number
+*@param {y} number
+*/
 function rookMoveValid(selectSquare, x, y) {
   if (x == selectSquare[0].x && y != selectSquare[0].y) {
     if (y > selectSquare[0].y) {
@@ -83,8 +96,13 @@ function rookMoveValid(selectSquare, x, y) {
   }
 }
 
-/* checks if bishop move is valid called by moveGenerator function */
-/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
+/**
+*@description
+*validates bishop moves
+*@param {selectSquare} array
+*@param {x} number
+*@param {y} number
+*/
 function bishopMoveValid(selectSquare, x, y) {
   if (x == selectSquare[0].x || y == selectSquare[0].y) {
     return false;
@@ -106,8 +124,13 @@ function bishopMoveValid(selectSquare, x, y) {
   return true;
 }
 
-/* checks if knight move is valid called by moveGenerator function */
-/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
+/**
+*@description
+*validates knight moves
+*@param {selectSquare} array
+*@param {x} number
+*@param {y} number
+*/
 function knightMoveValid(selectSquare, x, y) {
   if (x == selectSquare[0].x + 2 || x == selectSquare[0].x - 2) {
     if (y == selectSquare[0].y + 1 || y == selectSquare[0].y - 1) {
@@ -122,8 +145,14 @@ function knightMoveValid(selectSquare, x, y) {
   return false;
 }
 
-/* checks if pawn move is valid called by moveGenerator function */
-/* parameters: selectSquare=array(selected square) , (x,y):numbers (coordinate to be validated) */
+
+/**
+*@description
+*validates pawn moves
+*@param {selectSquare} array
+*@param {x} number
+*@param {y} number
+*/
 function pawnMoveValid(selectSquare, key, x, y) {
   if (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
     if (x == selectSquare[0].x) {

@@ -1,5 +1,4 @@
 /* function to analyze , pick and move pieces from ai side  */
-
 function aiMoves() {
   if (moveCount % 2 == 0) {
     turn = "b";
@@ -79,8 +78,14 @@ function aiMoves() {
   }
 }
 
-/* evaluates the position and detects if it is checkmate in either side */
-/* parameters -: pieces =object(board position)  , test = boolean */
+
+
+/**
+*
+* @param {pieces} object
+* @param {test} boolean
+*evaluates the position and detects if it is checkmate on either side
+*/
 function gameOverEvaluation(pieces, test) {
   let loop = true;
   let iterator = 0;

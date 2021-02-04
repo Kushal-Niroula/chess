@@ -1,4 +1,7 @@
-/* function to render the board and position in canvas*/
+/**
+*@description
+*renders pieces and draws position on canvas
+*/
 function update() {
   ctx.clearRect(0, 0, 640, 640);
   for (var i = 0; i <= 8; i++) {
@@ -23,7 +26,11 @@ function update() {
   drawThink();
 }
 
-/* function to update the matrix based on board position */
+/**
+*@description
+*updates matrix as per the boardPosition
+* @param {pieces} object (board position)
+*/
 function updateMatrix(pieces) {
   matrix = [
     [0, 0, 0, 0, 0, 0, 0, 0],

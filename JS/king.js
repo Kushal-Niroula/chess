@@ -1,5 +1,8 @@
-/* checks if the position is in check */
-function check(pieces) {
+/**
+* @param {pieces} object
+* checks if the position is in check
+*/
+function check(pieces,turn) {
   try {
     if (isCheck == "w" || isCheck == 0) {
       let wx = pieces["wK"][0].pos.x;
@@ -95,7 +98,7 @@ function castle(key, x, y, selectSquare) {
             if(selectSquare[0].x ==4){
 
             if((blackMoves[i].x == 5 && blackMoves[i].y ==7) || (blackMoves[i].x == 6 && blackMoves[i].y==7)){
-            
+
               valid = false;
             }
           }

@@ -49,6 +49,7 @@ function drawDots() {
   dots = [];
 }
 
+
 /* draw captured pieces at the side of the board */
 function drawCaptured() {
   ctx2.clearRect(0, 0, captured.width, captured.height);
@@ -208,6 +209,8 @@ function drawCaptured() {
     }
   }
 }
+
+
 
 /* draws last move */
 function drawArrow() {

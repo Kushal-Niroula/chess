@@ -10,8 +10,11 @@ const playAsWhite = document.getElementById('play-as-white');
 const gameMenu = document.getElementsByClassName('game-menu')[0];
 const contd = document.getElementById("continue");
 const p2p =  document.getElementById("p-Vs-p");
+const home =  document.getElementById('home');
+const think = document.getElementById('think');
+const value ={p:100 , b:350 ,n:325 , q:970 , r:470};
 
-/* chess piece images */
+/* chess piece images notation  = standard */
 const bP1 = document.getElementById('blackPawn');
 const bK1 = document.getElementById('blackKing');
 const bN1 = document.getElementById('blackKnight');
@@ -24,9 +27,8 @@ const wN1 = document.getElementById('whiteKnight');
 const wB1 = document.getElementById('whiteBishop');
 const wQ1 = document.getElementById('whiteQueen');
 const wR1 = document.getElementById('whiteRook');
-const home =  document.getElementById('home');
-const think = document.getElementById('think');
-const value ={p:100 , b:350 ,n:325 , q:970 , r:470};
+
+
 
 //piece audio
 const sound1 = new Audio('../assets/sound1.mp3');

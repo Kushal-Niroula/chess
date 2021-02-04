@@ -1,3 +1,8 @@
+/**
+*@description
+* function to efficiently clone the board position for further evaluation
+* @param {pieces} object(board position)
+*/
 function objectClone(pieces){
   let clone ={};
   for (const key in pieces){
