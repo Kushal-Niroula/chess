@@ -24,7 +24,7 @@ function gameSearch(pos, turn, tempMax) {
     position = objectClone(pos);
     updateMatrix(position);
     moveGenerator(position);
-    check(position);
+    check(position,turn);
 
     if (turn == "b") {
       obj = blackMoves[i];
@@ -68,7 +68,7 @@ function gameSearch(pos, turn, tempMax) {
       }
       updateMatrix(position);
       moveGenerator(position);
-      check(position);
+      check(position,turn);
 
       if (isCheck == turn) {
         continue;
@@ -79,7 +79,7 @@ function gameSearch(pos, turn, tempMax) {
 
       updateMatrix(position);
       moveGenerator(position);
-      check(position);
+      check(position,turn);
 
       if (isCheck == turn) {
         continue;

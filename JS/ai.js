@@ -21,7 +21,7 @@ function aiMoves() {
   }
   updateMatrix(pieces);
   moveGenerator(pieces);
-  check(pieces);
+  check(pieces,turn);
 
   let objx = parseInt(obj.piece[obj.piece.length - 2]);
   let objy = parseInt(obj.piece[obj.piece.length - 1]);
@@ -57,7 +57,7 @@ function aiMoves() {
   checkPromotion(pieces);
   updateMatrix(pieces);
   moveGenerator(pieces);
-  check(pieces);
+  check(pieces,turn);
 
   if (moveCount % 2 == 0) {
     turn = "b";
@@ -94,7 +94,7 @@ function gameOverEvaluation(pieces, test) {
   while (loop == true) {
     updateMatrix(pieces);
     moveGenerator(pieces);
-    check(pieces);
+    check(pieces,turn);
 
     if (isCheck == "b") {
       if (iterator >= blackMoves.length - 1) {
@@ -151,7 +151,7 @@ function gameOverEvaluation(pieces, test) {
               moveCount++;
               updateMatrix(pieces);
               moveGenerator(pieces);
-              check(pieces);
+              check(pieces,turn);
 
               if (isCheck == turn || (isCheck != turn && test == true)) {
                 if (color == "w") {
@@ -197,7 +197,7 @@ function gameOverEvaluation(pieces, test) {
       moveCount++;
       updateMatrix(pieces);
       moveGenerator(pieces);
-      check(pieces);
+      check(pieces,turn);
       if (isCheck == turn || (isCheck != turn && test == true)) {
         pieces[selectedPiece.key][selectedPiece.index].pos.x = objx;
         pieces[selectedPiece.key][selectedPiece.index].pos.y = objy;

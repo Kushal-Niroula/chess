@@ -2,9 +2,9 @@
 * @param {pieces} object
 * checks if the position is in check
 */
-function check(pieces) {
+function check(pieces,turn) {
   try {
-    if (isCheck == "w" || isCheck == 0) {
+    if (isCheck == "w" || (isCheck == 0 && turn == "w")) {
       let wx = pieces["wK"][0].pos.x;
       let wy = pieces["wK"][0].pos.y;
 
@@ -26,7 +26,7 @@ function check(pieces) {
       }
     }
 
-    if (isCheck == "b") {
+    if (isCheck == "b" || (isCheck == 0 && turn == "b")) {
       let bx = pieces.bK[0].pos.x;
       let by = pieces.bK[0].pos.y;
 

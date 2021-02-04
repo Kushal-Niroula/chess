@@ -124,7 +124,7 @@ function move(x, y, piece, pieces) {
 
     updateMatrix(pieces);
     moveGenerator(pieces);
-    check(pieces);
+    check(pieces,turn);
 
     if (isCheck == turn) {
       pieces[piece.key][piece.index].pos.x = selectSquare[0].x;
@@ -172,7 +172,7 @@ function move(x, y, piece, pieces) {
   checkPromotion(pieces);
   updateMatrix(pieces);
   moveGenerator(pieces);
-  check(pieces);
+  check(pieces,turn);
   if (moveCount % 2 == 0) {
     turn = "b";
   } else {
