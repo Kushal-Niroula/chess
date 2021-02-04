@@ -21,6 +21,7 @@ function update() {
   drawArrow();
   drawPos();
   drawCaptured();
+  drawPlayer();
   drawCheck();
   drawSelect();
   drawThink();

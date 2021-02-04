@@ -124,88 +124,88 @@ function drawCaptured() {
 
   for (let i = 0; i < wPawns; i++) {
     if (color == "w") {
-      ctx2.drawImage(wP1, i * 30, 0);
+      ctx2.drawImage(wP1, i * 30, 15);
     } else {
-      ctx2.drawImage(bP1, i * 30, 0);
+      ctx2.drawImage(bP1, i * 30, 15);
     }
     wCounter++;
   }
   for (let i = wCounter; i < wCounter + wRooks; i++) {
     if (color == "w") {
-      ctx2.drawImage(wR1, i * 30, 0);
+      ctx2.drawImage(wR1, i * 30, 15);
     } else {
-      ctx2.drawImage(bR1, i * 30, 0);
+      ctx2.drawImage(bR1, i * 30, 15);
     }
   }
   wCounter += wRooks;
 
   for (let i = wCounter; i < wCounter + wBishop; i++) {
     if (color == "w") {
-      ctx2.drawImage(wB1, i * 30, 0);
+      ctx2.drawImage(wB1, i * 30, 15);
     } else {
-      ctx2.drawImage(bB1, i * 30, 0);
+      ctx2.drawImage(bB1, i * 30, 15);
     }
   }
   wCounter += wBishop;
 
   for (let i = wCounter; i < wCounter + wKnight; i++) {
     if (color == "w") {
-      ctx2.drawImage(wN1, i * 30, 0);
+      ctx2.drawImage(wN1, i * 30, 15);
     } else {
-      ctx2.drawImage(bN1, i * 30, 0);
+      ctx2.drawImage(bN1, i * 30, 15);
     }
   }
   wCounter += wKnight;
 
   for (let i = wCounter; i < wCounter + wQueen; i++) {
     if (color == "w") {
-      ctx2.drawImage(wQ1, i * 30, 0);
+      ctx2.drawImage(wQ1, i * 30, 15);
     } else {
-      ctx2.drawImage(bQ1, i * 30, 0);
+      ctx2.drawImage(bQ1, i * 30, 15);
     }
   }
 
   for (let i = 0; i < bPawns; i++) {
     if (color == "w") {
-      ctx2.drawImage(bP1, i * 30, 590);
+      ctx2.drawImage(bP1, i * 30, 575);
     } else {
-      ctx2.drawImage(wP1, i * 30, 590);
+      ctx2.drawImage(wP1, i * 30, 575);
     }
     bCounter++;
   }
 
   for (let i = bCounter; i < bCounter + bRooks; i++) {
     if (color == "w") {
-      ctx2.drawImage(bR1, i * 30, 590);
+      ctx2.drawImage(bR1, i * 30, 575);
     } else {
-      ctx2.drawImage(wR1, i * 30, 590);
+      ctx2.drawImage(wR1, i * 30, 575);
     }
   }
   bCounter += bRooks;
 
   for (let i = bCounter; i < bCounter + bBishop; i++) {
     if (color == "w") {
-      ctx2.drawImage(bB1, i * 30, 590);
+      ctx2.drawImage(bB1, i * 30, 575);
     } else {
-      ctx2.drawImage(wB1, i * 30, 590);
+      ctx2.drawImage(wB1, i * 30, 575);
     }
   }
   bCounter += bBishop;
 
   for (let i = bCounter; i < bCounter + bKnight; i++) {
     if (color == "w") {
-      ctx2.drawImage(bN1, i * 30, 590);
+      ctx2.drawImage(bN1, i * 30, 575);
     } else {
-      ctx2.drawImage(wN1, i * 30, 590);
+      ctx2.drawImage(wN1, i * 30, 575);
     }
   }
   bCounter += bKnight;
 
   for (let i = bCounter; i < bCounter + bQueen; i++) {
     if (color == "w") {
-      ctx2.drawImage(bQ1, i * 30, 590);
+      ctx2.drawImage(bQ1, i * 30, 575);
     } else {
-      ctx2.drawImage(wQ1, i * 30, 590);
+      ctx2.drawImage(wQ1, i * 30, 575);
     }
   }
 }
@@ -226,5 +226,21 @@ function drawThink() {
   }
   if (turn == "b" && startGame) {
     ctx2.drawImage(think, 120, 130);
+  }
+}
+
+function drawPlayer(){
+  ctx2.font = "20px Georgia";
+  if(mode == 'ai'){
+    ctx2.fillText('AI1',100,640);
+    ctx2.fillText('AI2',100,15);
+  }
+  if(mode == 'p'){
+    ctx2.fillText('Player 1',100,640);
+    ctx2.fillText('Player 2',100,10);
+  }
+  if(mode == 0){
+    ctx2.fillText('Player 1',100,640);
+    ctx2.fillText('AI',100,15);
   }
 }
