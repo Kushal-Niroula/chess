@@ -33,8 +33,6 @@ function check(pieces) {
           return 0;
         }
       }
-
-      if (isCheck == "w") {
         let wx = pieces["wK"][0].pos.x;
         let wy = pieces["wK"][0].pos.y;
 
@@ -44,7 +42,7 @@ function check(pieces) {
             return 0;
           }
         }
-      }
+
     }
     isCheck = 0;
   } finally {

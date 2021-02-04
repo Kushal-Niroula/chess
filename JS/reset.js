@@ -5,7 +5,6 @@ function changeColor() {
   gameMenu.style.display = "none";
   startGame = true;
   if (mode == "ai" || mode == "p") {
-    color = "b";
     mode = 0;
   }
   if (color == "w") {
