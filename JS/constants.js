@@ -27,3 +27,8 @@ const wR1 = document.getElementById('whiteRook');
 const home =  document.getElementById('home');
 const think = document.getElementById('think');
 const value ={p:100 , b:350 ,n:325 , q:970 , r:470};
+
+//piece audio
+const sound1 = new Audio('../assets/sound1.mp3');
+const sound = new Audio('../assets/sound.mp3');
+const checkSound = new Audio('../assets/check.mp3');

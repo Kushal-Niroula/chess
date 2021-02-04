@@ -65,6 +65,10 @@ function aiMoves() {
   } else {
     turn = "w";
   }
+  sound.play();
+  if(isCheck){
+    checkSound.play();
+  }
   update(pieces);
   if (isCheck == turn) {
     gameOverEvaluation(pieces, true);

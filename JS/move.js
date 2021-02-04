@@ -133,6 +133,7 @@ function move(x, y, piece, pieces) {
 
       moveCount--;
     } else {
+      sound1.play();
       arrow = [];
       arrow = [selectSquare[0].x, selectSquare[0].y, x, y];
     }
@@ -145,6 +146,9 @@ function move(x, y, piece, pieces) {
     if (isCheck && mode == "p") {
       gameOverEvaluation(pieces, true);
     }
+  }
+  if(isCheck){
+    checkSound.play();
   }
   if (piece.key == "wK" || piece.key == "bK") {
     if (castle(piece.key, x, y, selectSquare)) {
