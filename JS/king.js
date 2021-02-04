@@ -80,28 +80,124 @@ function gameOverFunction(isCheck) {
 /* castle fucntion implementation*/
 /* parameters : key= string(wK or bK) , x,y=number(coordinate), selectSquare = object */
 function castle(key, x, y, selectSquare) {
+  let rook;
+  let valid = true;
+  if(x>4){
+    for(let i = 0 ; i<pieces[key[0]+'R'].length ; i++){
+      if(pieces[key[0]+'R'][i].pos.x ==7){
+        rook = pieces[key[0]+'R'][i]
+      }
+    }
+    if(key[0]=='w'){
+
+        if(selectSquare[0].x == 4 || (selectSquare[0].x == 3)){
+          for(let i = 0; i<blackMoves.length; i++){
+            if(selectSquare[0].x ==4){
+
+            if((blackMoves[i].x == 5 && blackMoves[i].y ==7) || (blackMoves[i].x == 6 && blackMoves[i].y==7)){
+            
+              valid = false;
+            }
+          }
+          else{
+            if((blackMoves[i].x == 4 && blackMoves[i].y ==7) || (blackMoves[i].x == 5 && blackMoves[i].y==7)){
+              valid = false;
+            }
+          }
+          }
+        }
+      }
+
+      if(key[0]=='b'){
+          if(selectSquare[0].x == 4 || (selectSquare[0].x == 3)){
+            for(let i = 0; i<whiteMoves.length; i++){
+              if(selectSquare[0].x ==4){
+              if((whiteMoves[i].x == 5 && whiteMoves[i].y ==0) || (whiteMoves[i].x == 6 && whiteMoves[i].y==0)){
+                valid = false;
+              }
+            }
+            else{
+              if((whiteMoves[i].x == 4 && whiteMoves[i].y ==0) || (whiteMoves[i].x == 5 && whiteMoves[i].y==0)){
+                valid = false;
+              }
+            }
+            }
+          }
+        }
+
+      }
+
+
+  if(x<4){
+    for(let i = 0 ; i<pieces[key[0]+'R'].length ; i++){
+      if(pieces[key[0]+'R'][i].pos.x ==0){
+        rook = pieces[key[0]+'R'][i]
+      }
+    }
+    if(key[0]=='w'){
+        if(selectSquare[0].x == 4 || (selectSquare[0].x == 3)){
+          for(let i = 0; i<blackMoves.length; i++){
+            if(selectSquare[0].x ==4){
+            if((blackMoves[i].x == 3 && blackMoves[i].y ==7) || (blackMoves[i].x == 2 && blackMoves[i].y==7)){
+              valid = false;
+            }
+          }
+          else{
+            if((blackMoves[i].x == 2 && blackMoves[i].y ==7) || (blackMoves[i].x == 1 && blackMoves[i].y==7)){
+              valid = false;
+            }
+          }
+          }
+        }
+      }
+
+      if(key[0]=='b'){
+          if(selectSquare[0].x == 4 || (selectSquare[0].x == 3)){
+            for(let i = 0; i<whiteMoves.length; i++){
+              if(selectSquare[0].x ==4){
+              if((whiteMoves[i].x == 3 && whiteMoves[i].y ==0) || (whiteMoves[i].x == 2 && whiteMoves[i].y==0)){
+                valid = false;
+              }
+            }
+            else{
+              if((whiteMoves[i].x ==2 && whiteMoves[i].y ==0) || (whiteMoves[i].x == 2 && whiteMoves[i].y==0)){
+                valid = false;
+              }
+            }
+            }
+          }
+        }
+
+
+
+
+
+
+  }
+  if(valid){
+  if(rook){
   if (isCheck == 0) {
     if (selectSquare[0].y == 7 || selectSquare[0].y == 0) {
       if (selectSquare[0].x == 3) {
         if (x == 1) {
           if (
-            pieces[key[0] + "R"][0].move == false &&
+            rook.move == false &&
             pieces[key][0].move == false
           ) {
             if (matrix[1][7]==0 && matrix[2][7] == 0 && key[0] == "w") {
               pieces[key][0].pos.x = 1;
-              pieces[key[0] + "R"][0].pos.x = 2;
+              rook.pos.x = 2;
               return true;
             }
             if (matrix[1][0]==0 && matrix[2][0] == 0 && key[0] == "b") {
               pieces[key][0].pos.x = 1;
-              pieces[key[0] + "R"][0].pos.x = 2;
+              rook.pos.x = 2;
               return true;
             }
           }
         }
         if (x == 5) {
-          if (pieces[key][1].move == false) {
+          if (pieces[key][0].move == false && rook.move == false) {
             if (
               matrix[4][7] == 0 &&
               matrix[5][7] == 0 &&
@@ -109,7 +205,7 @@ function castle(key, x, y, selectSquare) {
               key[0] == "w"
             ) {
               pieces[key][0].pos.x = 5;
-              pieces[key[0] + "R"][1].pos.x = 4;
+              rook.pos.x = 4;
               return true;
             }
 
@@ -120,7 +216,7 @@ function castle(key, x, y, selectSquare) {
               key[0] == "b"
             ) {
               pieces[key][0].pos.x = 5;
-              pieces[key[0] + "R"][1].pos.x = 4;
+              rook.pos.x = 4;
               return true;
             }
           }
@@ -129,7 +225,7 @@ function castle(key, x, y, selectSquare) {
       if (selectSquare[0].x == 4) {
         if (x == 2) {
           if (
-            pieces[key[0] + "R"][0].move == false &&
+            rook.move == false &&
             pieces[key][0].move == false
           ) {
             if (
@@ -139,7 +235,7 @@ function castle(key, x, y, selectSquare) {
               key[0] == "w"
             ) {
               pieces[key][0].pos.x = 2;
-              pieces[key[0] + "R"][0].pos.x = 3;
+              rook.pos.x = 3;
               return true;
             }
             if (
@@ -149,24 +245,24 @@ function castle(key, x, y, selectSquare) {
               key[0] == "b"
             ) {
               pieces[key][0].pos.x = 2;
-              pieces[key[0] + "R"][0].pos.x = 3;
+              rook.pos.x = 3;
               return true;
             }
           }
         }
         if (x == 6) {
           if (
-            pieces[key[0] + "R"][1].move == false &&
+            rook.move == false &&
             pieces[key][0].move == false
           ) {
             if (matrix[5][7] == 0 && matrix[6][7] == 0 && key[0] == "w") {
               pieces[key][0].pos.x = 6;
-              pieces[key[0] + "R"][1].pos.x = 5;
+              rook.pos.x = 5;
               return true;
             }
             if (matrix[5][0] == 0 && matrix[6][0] == 0 && key[0] == "b") {
               pieces[key][0].pos.x = 6;
-              pieces[key[0] + "R"][1].pos.x = 5;
+              rook.pos.x = 5;
               return true;
             }
           }
@@ -174,5 +270,7 @@ function castle(key, x, y, selectSquare) {
       }
     }
   }
+}
+}
   return false;
 }

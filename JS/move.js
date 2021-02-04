@@ -133,6 +133,9 @@ function move(x, y, piece, pieces) {
 
       moveCount--;
     } else {
+      if(piece.key == 'bK' || piece.key == 'wK' || piece.key == 'bR' || piece.key == 'wR'){
+        pieces[piece.key][piece.index].move = true;
+      }
       sound1.play();
       arrow = [];
       arrow = [selectSquare[0].x, selectSquare[0].y, x, y];
