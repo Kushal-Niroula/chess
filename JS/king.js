@@ -2,7 +2,7 @@
 * @param {pieces} object
 * checks if the position is in check
 */
-function check(pieces,turn) {
+function check(pieces) {
   try {
     if (isCheck == "w" || isCheck == 0) {
       let wx = pieces["wK"][0].pos.x;
