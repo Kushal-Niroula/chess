@@ -7,6 +7,8 @@ function aiMoves() {
   }
   let position = objectClone(pieces);
   let objIndex;
+  updateMatrix(pieces);
+  moveGenerator(pieces);
 
   let obj = gameSearch(
     position,
@@ -84,7 +86,7 @@ if(isCheck == turn){
 
 /**
 *
-* @param {pieces} object
+* @param {pos} object
 * @param {test} boolean
 * @return boolean(if checkmate or not)
 *evaluates the position and detects if it is checkmate on either side
