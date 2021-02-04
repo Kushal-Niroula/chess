@@ -34,3 +34,7 @@ const wR1 = document.getElementById('whiteRook');
 const sound1 = new Audio('assets/sound1.mp3');
 const sound = new Audio('assets/sound.mp3');
 const checkSound = new Audio('assets/check.mp3');
+
+//squareColor
+const lightSquare = "#f5dcda";
+const darkSquare = "#b58863";
