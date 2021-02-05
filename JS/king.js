@@ -77,6 +77,9 @@ function gameOverFunction(isCheck) {
       result.innerHTML = "black Won";
     }
   }
+  else{
+    result.innerHTML = "AI resigns";
+  }
 }
 
 
